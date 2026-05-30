@@ -1,0 +1,32 @@
+================================================================================
+  REDACTION 001
+  LONG FISH - INTERNAL DESIGN NOTE
+  retrieved 14 MAR 2026 - multi-pass partial recovery
+================================================================================
+
+  ████████ designed for crew of ████.
+  hull pressure rating: ████ m theoretical, ████ m operational.
+  propulsion: ████████████████████████████████████████████████████.
+  acoustic signature: targeted at ████████████ dB at ████ Hz, achievable
+       ████████████████████████████████████████████████████████████████████████
+       ████████████████████████████████████████████████████████████████████████.
+
+  CRITICAL FAILURE MODE
+  ---------------------
+  ████████████████████████████████████████████████████████████████████████████
+  ████████████████████████████████████████████████████████████████████████████
+  ████████████████████████████████████████████████████████████████████████████
+  pressure event at ██ metres caused █████████████████████████ before
+  ████████████████ could ██████████████████.
+
+  the design was correct.
+  the design was correct.
+  the design was correct.
+  ████████████████████████████████████████████████████████████████████████████
+  the men inside were eighteen, twenty-six, and forty-one.
+
+  THIS ENTRY IS NOT REDACTED FOR REASONS OF NATIONAL SECURITY.
+  THIS ENTRY IS REDACTED OUT OF RESPECT FOR THREE FAMILIES.
+  THE FULL VERSION IS AVAILABLE TO THEM ON REQUEST.
+                                                                       - Y.
+================================================================================

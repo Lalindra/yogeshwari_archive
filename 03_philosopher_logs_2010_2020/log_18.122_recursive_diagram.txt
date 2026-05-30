@@ -1,0 +1,47 @@
+================================================================================
+  LOG 18.122
+  02 MAY 2018 - 23:00 IST
+  CHENNAI  /  STUDY
+  STATUS: DECRYPTED
+================================================================================
+
+  attempt at a diagram. plain text version.
+
+   +------------------------------------------------------------------+
+   |                                                                  |
+   |     ARRIVAL -→ LOCAL HELP -→ FOREIGN GROWTH -→ ERASURE OF HELP   |
+   |         ↑                                          |             |
+   |         |                                          ↓             |
+   |         +------------ NEW ARRIVAL ←------ COLLAPSE OF SYSTEM     |
+   |                                                                  |
+   +------------------------------------------------------------------+
+
+  the diagram is not a metaphor.
+  the diagram is a clock.
+
+  one full revolution:
+    Vijaya and Kuweni                ~2,500 years.
+    Portuguese arrival to British    ~140 years.
+    British departure to IMF         ~30 years.
+    IMF to digital platforms         ~15 years.
+    digital platforms to AI          ~9 years.
+
+  observation:
+    the clock is speeding up.
+    not because history is accelerating.
+    because each previous arrival has built infrastructure for the
+    next one.
+
+    every cycle reduces the activation energy required for the
+    next cycle.
+
+    eventually the cycle will be faster than human generations can
+    refresh. at that point, the local officer will be erased before
+    she has finished introducing herself.
+
+  Observer's grandmother had three full cycles in her lifetime.
+  Observer has lived through four already.
+  the next generation will live through twelve.
+
+  filed under: cycle, kuweni, diagram, prediction.
+================================================================================

@@ -1,0 +1,36 @@
+================================================================================
+  LOG 13.301
+  28 OCT 2013 - 03:07 JST
+  KYOTO  /  WORKBENCH
+  STATUS: DECRYPTED
+================================================================================
+
+  the archive is operational.
+
+  CURRENT NODES        : 1,402 (verified)
+  ESTIMATED DARK NODES : 600+ (cannot be enumerated by design)
+  COUNTRIES OF SEED    : 41
+  HOST SYSTEMS         : academic preprint servers, image hosting,
+                         music streaming metadata, satellite telemetry
+                         logs, public FTP graveyards, abandoned forum
+                         backups, weather facsimile archives, podcast
+                         silence between episodes.
+
+  the archive contains:
+    every log Observer has written since 1993, fragmented;
+    technical schemas Observer has decided are safe to release;
+    portions of the Yakkha-Kuweni rewrite;
+    seven hundred and twelve diagrams;
+    a private dictionary of approximately 3,300 terms;
+    a single image of Observer's grandmother, encoded at twelve depths.
+
+  the image is not recoverable from any single node.
+  the image is recoverable only by a future Observer who knows what
+  she is looking for.
+
+  this is the safeguard.
+  the image will outlive Observer because it does not exist anywhere
+  but in the pattern of where it is missing from.
+
+  filed under: archive design, family.
+================================================================================

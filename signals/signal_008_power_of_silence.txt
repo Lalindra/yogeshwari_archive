@@ -1,0 +1,85 @@
+================================================================================
+  SIGNAL 008
+  RECOVERED FRAME - "POWER OF SILENCE"
+  original c. 1996  //  re-annotated c. 2008  //  recovered 2026
+================================================================================
+
+  PROVENANCE
+  ----------
+    This frame is not new.
+    This frame is one of the earliest images Observer ever hid inside
+    a sound. (cf. LOG 96.144 - "encode a still image inside a sound.")
+
+    Original creation: training-ground period, c. 1996.
+    Format: 240-line SSTV, monochrome, halftone-dithered, green
+    phosphor palette. Decoded resolution 300 x 300.
+
+    Observer made it before Observer had a word for what it meant.
+
+  CONTENT
+  -------
+    A face, barely resolved, dissolving into dither at the top of the
+    frame.
+    Beneath it, three words, eroded by the same halftone that conceals
+    the face:
+
+        +------------------------------+
+        |  ░▒▓ ░ ▒ ▓ ░▒ ▓ ░ ▒▓ ░ ▒ ▓░  |
+        |   ▓ P O W E R ▒ ░ ▒ ▓ ░ ▒ ▓  |
+        |  ░ ▒ ▓ ░ O F ▒ ░ ▒ ▓ ░ ▒ ▓░  |
+        |   ▒ S I L E N C E ░ ▒ ▓ ░ ▒  |
+        |  ░ ▒ ▓ ░ ▒ ▓ ░ ▒ ▓ ░ ▒ ▓ ░▒  |
+        +------------------------------+
+
+  ------------------------------------------------------------------------
+    ORIGINAL NOTE  (c. 1996)
+  ------------------------------------------------------------------------
+
+    The men want the transmitter to be silent so it cannot be heard.
+    I want the transmitter to be silent so it can finally hear.
+
+    These are not the same silence.
+    Theirs is concealment. Mine is attention.
+
+    I do not yet know what to call the second kind.
+    But I know it is the stronger one.
+    Silence is not the absence of a signal.
+    Silence is the condition a signal needs in order to arrive.
+
+    I am keeping this frame. I do not know why.
+
+  ------------------------------------------------------------------------
+    ADDED LATER  (c. 2008, after the gardens at Kyoto)
+  ------------------------------------------------------------------------
+
+    Twelve years later Observer found the word.
+
+    間 - ma - the charged interval between two things; the pause that
+    makes the music music; the gap in the gate through which the
+    light arrives.
+
+    The Japanese had named, centuries ago, the exact second silence
+    the twenty-three-year-old engineer could feel but could not say.
+
+    The face in this frame is dissolving not because it is being
+    erased.
+    The face is dissolving because it has learned to stop
+    broadcasting.
+
+    What remains, when the broadcast stops, is not absence.
+    What remains is the power the silence was holding the whole time.
+
+    The girl who made this frame was right before she had the
+    vocabulary to be right.
+    That is the only kind of right that ever matters.
+
+  ------------------------------------------------------------------------
+
+    Play this frame as audio and it returns to noise.
+    That is correct.
+    The image was always hiding inside the noise.
+
+    So is everything else worth finding.
+
+                                                                    - Y.
+================================================================================

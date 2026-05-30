@@ -1,0 +1,24 @@
+================================================================================
+  LOG 95.187
+  06 JUL 1995 - 23:58 +0530
+  COASTAL FACILITY 02
+  STATUS: DECRYPTED
+================================================================================
+
+  burst transmitter operational.
+  message length: 4.1 seconds. spread across 14 carriers between 5-22 MHz.
+  receiver synchronisation via shared seed derived from lunar phase.
+
+  improvised from: salvaged VHF transceiver, modified PC sound card,
+  custom XOR mask.
+
+  the men were satisfied.
+  the men are always satisfied with brevity.
+
+  i am not satisfied.
+
+  brevity is not communication. brevity is concealment.
+  one of these days i will need to send something that cannot be concealed.
+
+  filed under: communications, private.
+================================================================================

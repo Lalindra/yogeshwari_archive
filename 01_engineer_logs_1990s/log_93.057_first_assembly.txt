@@ -1,0 +1,22 @@
+================================================================================
+  LOG 93.057
+  21 SEP 1993 - 02:14 +0530
+  MORATUWA / DEPT. ELECTRONIC
+  STATUS: DECRYPTED
+================================================================================
+
+  receiver assembled.
+  components recovered from RX-7 hulk, port north.
+  IF stage: 10.7 MHz, drift acceptable < 200 Hz over 90 min.
+  antenna: improvised loop, 0.6 m diameter, 12-turn copper.
+
+  prof. C. confirms theory: amplitude alone does not carry meaning.
+  meaning lives in the spacing between two carriers.
+
+  filed under: principles.
+
+  // නිදිමත අඩුයි. සමීකරණ පැහැදිලියි. //
+  // ( sleep low. equations clear. )                                          //
+
+  end log.
+================================================================================

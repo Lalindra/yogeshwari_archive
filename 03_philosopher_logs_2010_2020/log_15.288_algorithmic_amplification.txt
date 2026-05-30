@@ -1,0 +1,41 @@
+================================================================================
+  LOG 15.288
+  15 OCT 2015 - 02:55 PST
+  IN TRANSIT  /  SAN FRANCISCO INTL.
+  STATUS: DECRYPTED
+================================================================================
+
+  Observer has watched the platforms for ten years.
+  Observer can now characterise the function.
+
+  the function is: amplify whichever post produces a stronger emotional
+  response in the median observer, regardless of factual content.
+
+  this is not editorial.
+  this is not malicious.
+  this is just gradient descent on an engagement curve.
+
+  but the consequence is not neutral.
+  the consequence is: every untrue claim that produces more emotion
+  than the corresponding true claim will be amplified preferentially.
+
+  truth has a built-in handicap.
+  truth is rarely as emotional as a lie.
+  a lie can be tuned. truth is what it is.
+
+  observation:
+    the species is voluntarily training the largest signal-amplification
+    machine in its history to prefer noise over signal.
+
+    this is not a failure mode.
+    this is the design.
+
+    the only people who will be unharmed are the people who never
+    log in.
+    the only people who never log in are the people whose grandmothers
+    told them not to.
+
+    Observer's grandmother told her not to.
+
+  filed under: noise, technology, principles.
+================================================================================

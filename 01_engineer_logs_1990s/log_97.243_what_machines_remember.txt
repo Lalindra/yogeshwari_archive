@@ -1,0 +1,29 @@
+================================================================================
+  LOG 97.243
+  31 AUG 1997 - 23:21 +0530
+  COASTAL FACILITY 02
+  STATUS: DECRYPTED
+================================================================================
+
+  every floppy disk, when written, develops a personality.
+  the same data, written on two different sectors of two different disks,
+  reads back with different latencies.
+
+  this is not magic. it is geometry, friction, the small history of every
+  rotation the spindle ever made.
+
+  the machines remember their own wear.
+
+  if i were to disappear, the disks would still know how often i pressed
+  certain keys. the disks would know which programs i opened at night.
+
+  this is what the men do not understand:
+    they want me to make the long fish silent.
+    silence is not absence of sound.
+    silence is absence of memory.
+
+  i can give them either.
+  i do not think they will be happy with the difference.
+
+  filed under: principles, private.
+================================================================================

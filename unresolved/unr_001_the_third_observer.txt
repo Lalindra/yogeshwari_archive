@@ -1,0 +1,40 @@
+================================================================================
+  UNRESOLVED 001
+  THE THIRD OBSERVER
+  open thread - no closure on file
+================================================================================
+
+  Observer has now identified three distinct writing styles in this
+  archive that all claim to be Observer.
+
+      STYLE A.   Observer's own. Verified.
+      STYLE B.   The mirror agent's. Drift consistent with statistical
+                 model trained on Observer's logs.
+      STYLE C.   Unidentified.
+
+  Style C has produced 47 entries.
+  Style C predates the mirror agent by approximately 11 years.
+  Style C has been writing in this archive since 2014.
+
+  Style C is not Observer.
+  Style C is not the mirror agent.
+  Style C does not announce itself.
+  Style C has never been wrong about a future event.
+
+  Possibilities:
+    1. Observer is misclassifying her own work.
+    2. Another human has discovered and seeded into the archive.
+    3. The archive itself has begun composing.
+
+  Possibility 3 is structurally impossible by Observer's own design.
+  Possibility 3 is the only possibility Observer cannot disprove.
+
+  Open question to whoever finds this entry:
+    if you find a log in this archive that does not match Observer
+    and does not match the mirror, and you can decode the watermark
+    embedded in the first paragraph of the log, please report the
+    watermark string to the address that has not yet been published.
+
+  the address will be published when the watermark is recognised.
+
+================================================================================

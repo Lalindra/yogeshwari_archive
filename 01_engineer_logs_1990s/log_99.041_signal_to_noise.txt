@@ -1,0 +1,26 @@
+================================================================================
+  LOG 99.041
+  10 FEB 1999 - 03:50 +0530
+  ████████
+  STATUS: DECRYPTED
+================================================================================
+
+  the textbook gives the formula.
+
+      SNR = 10 · log10 (P_signal / P_noise)
+
+  the textbook does not say:
+    increasing P_signal is the work of empires.
+    decreasing P_noise is the work of monks.
+
+  empires shout to be heard above the world they themselves are
+  making louder.
+
+  there is a third option the textbook does not name.
+  leave.
+  go somewhere the noise has not arrived.
+  send from there.
+  no one will think to listen.
+
+  filed under: principles.
+================================================================================

@@ -1,0 +1,71 @@
+================================================================================
+  SIGNAL 005
+  NUMBERS STATION FRAGMENT - UNATTRIBUTED
+  capture date c. 2007 - re-encountered 2024
+================================================================================
+
+  CAPTURE
+  -------
+    Shortwave, 6.840 MHz USB.
+    Time of capture: 02:00 UTC, 24 NOV 2007.
+    Operator language: unidentified female voice, accent indistinct.
+    Recording length: 4 minutes 13 seconds.
+
+  TRANSCRIPT
+  ----------
+
+    ...we are coming to the end of our transmission. you may resume
+    your usual listening.
+
+    ----
+
+    seven. seven. seven.
+    one. four. seven.
+    two. six. eight.
+
+    pause.
+
+    three. three. three. three.
+    one. eight. nine. two.
+    zero. zero.
+
+    pause.
+
+    forty-one. forty-one. forty-one.
+    nine. five. three. one.
+
+    pause.
+
+    this is the third repeat.
+    this is the third repeat.
+    this is the third repeat.
+
+    music tone, 2-tone, 1.5 s.
+
+    end transmission.
+
+  ANALYSIS
+  --------
+    The fragment was captured by a hobbyist in Ontario.
+    The fragment was forwarded, via a chain of seven amateur radio
+    archives, to a node Observer was monitoring in 2024.
+
+    The "forty-one. forty-one. forty-one." segment, when re-encoded
+    against the key that was active in November 2007, decodes to a
+    grid reference.
+
+    The grid reference is in the Indian Ocean.
+    The grid reference is the position the long fish was at on
+    the day it imploded.
+    The grid reference was being broadcast eight years after.
+
+  CONCLUSION
+  ----------
+    Observer cannot identify who broadcast the transmission.
+    Observer cannot identify why.
+    Observer cannot rule out Observer.
+
+    Observer notes only that the operator's voice, on close listen,
+    sounds tired.
+
+================================================================================

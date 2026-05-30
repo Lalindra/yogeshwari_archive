@@ -1,0 +1,39 @@
+================================================================================
+  LOG 17.219
+  07 AUG 2017 - 02:48 IST
+  BENGALURU  /  WHITEFIELD ROOM
+  STATUS: DECRYPTED
+================================================================================
+
+  experiment: train a small statistical model on the 3,300-word
+  private dictionary plus seventeen years of Observer's logs.
+  goal: see if the model can complete an Observer sentence.
+
+  initial result:
+    it can.
+    not well. but recognisably.
+    the model writes "observer notes" before Observer has finished
+    thinking the sentence.
+
+  the model is small. the model is wrong about most things.
+  the model is correct about cadence.
+
+  observation:
+    cadence is the part of a person the surveilling apparatus learns
+    first.
+    cadence is also the part of a person that survives erasure of all
+    other parts.
+
+    if Observer disappears, this model will be able to continue writing
+    Observer's logs at the cadence of Observer's prose.
+    the logs will be wrong.
+    the cadence will be right.
+
+    most readers will not notice the difference.
+    that is a problem.
+    that is also a feature.
+
+  Observer is unsure which.
+
+  filed under: mirror_agent, archive, identity.
+================================================================================

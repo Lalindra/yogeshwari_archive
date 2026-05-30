@@ -1,0 +1,24 @@
+================================================================================
+  LOG 95.061
+  09 FEB 1995 - 03:22 +0530
+  COASTAL FACILITY 02
+  STATUS: DECRYPTED
+================================================================================
+
+  hydrophone array calibration, 6-channel.
+  baseline noise floor: -78 dBV.
+  sources detected at 500m: outboard, twin-screw, ~2200 rpm.
+  identification confidence: high.
+
+  observation:
+    sea water is not silent.
+    the silence we hear above water is a lie. the surface absorbs.
+    below, every shrimp, every shore stone, every pressure differential
+    speaks.
+
+    the dolphin is not a poetic creature.
+    the dolphin is an honest one.
+    it lives in the medium where deception costs energy.
+
+  filed under: acoustics, principles.
+================================================================================

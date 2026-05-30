@@ -1,0 +1,37 @@
+================================================================================
+  LOG 18.299
+  26 OCT 2018 - 03:30 +0900
+  TOKYO  /  TINY DESK
+  STATUS: DECRYPTED
+================================================================================
+
+  Observer has begun receiving letters.
+
+  the letters are addressed to Observer.
+  the letters have no return address.
+  the letters are signed with a single character that is not in any
+  alphabet Observer can identify.
+
+  the letters describe events from Observer's past that nobody else
+  could know:
+    the second crossing.
+    the name of the dog Observer kept for six weeks in Almaty.
+    the day Observer cried at Ryōan-ji.
+
+  Observer did not record the day at Ryōan-ji.
+  Observer was certain Observer had not recorded it.
+
+  Observer checked the archive.
+  there is a fragment in the archive Observer does not remember
+  writing.
+
+  hypothesis 1: Observer wrote it and has forgotten.
+  hypothesis 2: the mirror model is now seeded into the archive and
+                writes entries Observer should have written.
+  hypothesis 3: Observer is not alone in the archive.
+
+  Observer cannot eliminate hypothesis 3.
+  Observer is no longer certain it is the dangerous hypothesis.
+
+  filed under: mirror_agent, archive, unresolved.
+================================================================================

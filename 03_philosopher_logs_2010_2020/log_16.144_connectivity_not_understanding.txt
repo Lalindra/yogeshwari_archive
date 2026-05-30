@@ -1,0 +1,35 @@
+================================================================================
+  LOG 16.144
+  23 MAY 2016 - 14:11 JST
+  KAGOSHIMA  /  COASTAL PATH
+  STATUS: DECRYPTED
+================================================================================
+
+  the species has confused connectivity with understanding.
+
+  these are not the same.
+
+  CONNECTIVITY    = number of edges in the graph.
+  UNDERSTANDING   = mutual prediction accuracy across an edge.
+
+  a fully connected graph with low edge-quality is more dangerous than
+  a sparse graph with high edge-quality.
+  a fully connected graph with low edge-quality is what we now have.
+
+  observation:
+    two people who have never met but who share a feed know each
+    other's outrages, aesthetic preferences, and political enemies.
+    they know almost nothing else about each other.
+    they do not know each other's parents. they do not know each
+    other's diseases. they do not know what each other eats. they do
+    not know the sound of each other's voices.
+
+    this is not knowing a person.
+    this is sharing a hostility radius.
+
+    the graph is dense.
+    the people inside the graph are lonely in a way the graph cannot
+    measure.
+
+  filed under: connectivity, noise, principles.
+================================================================================

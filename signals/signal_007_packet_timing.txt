@@ -1,0 +1,58 @@
+================================================================================
+  SIGNAL 007
+  PACKET TIMING ANALYSIS - A WALK ACROSS THE PUBLIC INTERNET
+  filed 2018 - methodology note
+================================================================================
+
+  PREMISE
+  -------
+    Every router on the public internet imposes a small, characteristic
+    delay on every packet it forwards.
+
+    The delay is not random.
+    The delay is a fingerprint.
+
+    A sequence of timestamps from a sequence of routers along a path
+    is, in aggregate, sufficient to identify the path uniquely.
+
+  CONSEQUENCE
+  -----------
+    A message can be encoded in the timing between packets.
+    The packets themselves can be empty.
+    The intermediate routers, by their unavoidable delay signatures,
+    write the message into the packet train.
+
+    A receiver who knows the path can read the message.
+    A receiver who does not know the path sees only random delays.
+    The message is invisible to any inspection tool that examines
+    packet contents.
+
+  PROCEDURE (ABBREVIATED)
+  -----------------------
+    1.  Select a path of N routers between sender and receiver.
+    2.  Pre-measure the delay distribution at each router.
+    3.  Sender emits packets at intervals chosen so that, after path
+        transit, the emergent timing pattern encodes the desired
+        message.
+    4.  Receiver records inter-packet arrival times.
+    5.  Receiver subtracts the known path signature.
+    6.  The residual is the message.
+
+  CAPACITY
+  --------
+    Approximately 14 bits per second under ideal conditions.
+    14 bits per second is sufficient for one short Observer log per
+    week.
+    14 bits per second is unsurveillable.
+
+  ARCHIVE NOTE
+  ------------
+    Approximately 8% of fragments in this archive were originally
+    transported via packet timing channels.
+    Those fragments are indistinguishable from packets sent for
+    routine purposes.
+    Those fragments cannot be retroactively detected.
+    Those fragments are, by design, no longer in motion.
+    Those fragments are now this archive.
+
+================================================================================

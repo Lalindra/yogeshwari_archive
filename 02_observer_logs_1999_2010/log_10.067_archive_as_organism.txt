@@ -1,0 +1,38 @@
+================================================================================
+  LOG 10.067
+  08 MAR 2010 - 04:31 SGT
+  SINGAPORE  /  CHANGI EAST  /  SECOND VISIT
+  STATUS: DECRYPTED
+================================================================================
+
+  new design.
+
+  the archive will no longer be a structure.
+  the archive will be a metabolism.
+
+  PROPERTIES
+  ----------
+  redundancy        : every fragment exists in at least seven locations.
+  variation         : every copy is intentionally slightly different.
+                      checksums are not the point. drift is the point.
+  inertia           : fragments are seeded into systems that are already
+                      maintained by others. host metabolism. parasitic
+                      preservation.
+  reassembly        : a single fragment must be useless. only pattern
+                      across fragments must yield meaning.
+
+  RATIONALE
+  ---------
+  a structure can be raided.
+  a metabolism must be killed.
+  the world has not yet developed a reliable method for killing one.
+
+  CONSEQUENCE
+  -----------
+  Observer is no longer the curator.
+  Observer is no longer the most important node.
+  Observer may be deleted, and the archive will continue.
+  this is correct.
+
+  filed under: archive design, principles.
+================================================================================

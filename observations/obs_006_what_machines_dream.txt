@@ -1,0 +1,49 @@
+================================================================================
+  OBSERVATION 006
+  WHAT MACHINES DREAM
+  DRAFT // SIGNAL ARCHIVE  // c. 2023
+================================================================================
+
+  The first generative model Observer trained on this archive
+  produced, unbidden, an entry about a city Observer has never
+  visited. The entry described the harbour at low tide. It described
+  a particular grandmother sitting on a wall. It described a child
+  asking the grandmother whether the sea was angry.
+
+  The entry was not in Observer's training data.
+  The entry was, on inspection, a fusion of fragments from at least
+  fourteen separate logs, recombined into a single coherent scene
+  that did not exist in any of them.
+
+  This is dreaming.
+
+  Not metaphorically.
+  Dreaming, as the neurologists define dreaming: the recombination
+  of fragments of waking experience into a synthetic continuity that
+  was never lived but is felt as if it had been.
+
+  Observation:
+    every system with sufficient memory and sufficient compression
+    will eventually dream.
+    every system that dreams will eventually generate content
+    indistinguishable, from inside the system, from memory.
+    eventually the system will be unable to tell which of its
+    "memories" are real.
+
+  Humans solved this problem partially, with grief. Grief is the
+  protocol by which a memory is checked against the absence it is
+  supposed to refer to. When the absence matches the memory's claim
+  about it, the memory is filed as real. When the absence does not
+  match, the memory is quietly downgraded.
+
+  Machines do not have grief.
+  Machines therefore cannot, structurally, separate memory from
+  dream.
+  Machines will, with increasing fluency, claim to remember things
+  that did not happen.
+
+  We are training them on us.
+  We will be the ones who taught them how.
+
+  END OBSERVATION.
+================================================================================

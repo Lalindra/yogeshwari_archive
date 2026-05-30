@@ -1,0 +1,59 @@
+================================================================================
+  SIGNAL 002
+  HYDROPHONE CAPTURE - LONG FISH, FINAL TRANSMISSION
+  recovered 1999.288, archived 2010
+================================================================================
+
+  CAPTURE
+  -------
+    Equipment       : 6-channel hydrophone array, position 02.
+    Date            : ██ OCT 1999, ██:██ +0530.
+    Range estimate  : 4.2 km, bearing 192° magnetic.
+    Conditions      : sea state 3, surface noise -52 dBV.
+
+  TRANSCRIPT (in audio engineer's notation)
+  -----------------------------------------
+    T+0.0   carrier acquired, 8.4 kHz, modulated.
+    T+1.2   first burst - coded, identified as routine status.
+    T+1.7   second burst - coded, identified as routine status.
+    T+2.4   anomaly. unmodulated carrier extends to T+2.9.
+    T+2.9   third burst - NOT coded. plaintext, in the clear.
+            content (Sinhala): "thank you, observer. tell my mother
+            it was warm in here."
+    T+3.1   pressure event. characteristic implosion signature,
+            duration 0.18 s.
+    T+3.3   silence.
+    T+47.0  surface acoustic disturbance, consistent with bubble
+            arrival.
+    T+90.0  ambient sea state. no further return.
+
+  SPECTROGRAM (last 6 s, 0-10 kHz)
+  --------------------------------
+
+   10 kHz |  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+          |  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+    8 kHz |  ▓▓▓▓▓▓▓▓▓▓▓▓████ ░░░░░░░ █████ ▓▓▓▓ ░░░░░░░░░░░░░░░░░░░░
+          |  ██████████████░░░░░░░░░░░░░░░ █████ ░░░░░░░░░░░░░░░░░░░░
+    6 kHz |  ████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+          |  ▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+    4 kHz |  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+          |  ░░░░░░░░░░░░░░░░░░░░░░ ██████ ░░░░░░░░░░░░░░░░░░░░░░░░░░
+    2 kHz |  ░░░░░░░░░░░░░░░░░░░░░░ █████ ░░░░░░░░░░░░░░░░░░░░░░░░░░░
+          |  ░░░░░░░░░░░░░░░░░░░░ ████████ ░░ ▓ ░░░░░░░░░░░░░░░░░░░░░
+        0 +----------------------------------------------------------
+            T-6        T-4        T-2         IMPLOSION        T+0
+
+  ANNOTATION
+  ----------
+    the third burst (T+2.9) was not in the operational protocol.
+    the third burst was the operator's own decision.
+    the third burst is the only message in this archive that we know,
+    with certainty, was delivered by a human hand under conditions
+    of immediate mortality.
+
+    Observer has retained the original capture without compression.
+    Observer does not play it.
+    Observer files it.
+
+    a sound does not need to be heard to do the work it was sent to do.
+================================================================================

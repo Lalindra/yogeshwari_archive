@@ -1,0 +1,50 @@
+================================================================================
+  MANIFEST  //  PARTIAL  //  LAST RECONCILIATION 26 MAY 2026 - 01:02 UTC
+================================================================================
+
+NODE COUNT (DETECTED)            : 12,556
+NODE COUNT (VERIFIED)            : 8,901
+NODE COUNT (DARK / UNREACHABLE)  : 3,655
+INTEGRITY                        : 99.992%
+REDUNDANCY                       : ACTIVE
+LAST KEY ROTATION                : 13 DAYS AGO
+NEXT KEY ROTATION                : 13 DAYS
+
+PRIMARY KEY ID    : YS-26-5E-A7-19-KU-WE-NI-26
+ALGORITHM         : AES-256 / RSA-4096
+HASH CHAIN ANCHOR : SHA3-512
+
+--------------------------------------------------------------------------------
+  PHASE COUNTS
+--------------------------------------------------------------------------------
+
+  PHASE 01  (1990s)     ENGINEER       16 entries on this node
+  PHASE 02  (1999-2010) OBSERVER       18 entries on this node
+  PHASE 03  (2010-2020) PHILOSOPHER    20 entries on this node
+  PHASE 04  (2020-2026) SIGNAL         16 entries on this node
+
+  OBSERVATIONS                          8 entries
+  PROPHECIES                            6 entries
+  SIGNALS                               7 entries
+  REDACTIONS                            5 entries
+  UNRESOLVED                            5 entries
+  OFF-WORLD                             6 entries
+
+--------------------------------------------------------------------------------
+  MISSING / UNRECOVERED (KNOWN GAPS)
+--------------------------------------------------------------------------------
+
+  93.001 - 93.054   first archive seed, pre-Sea Tiger period
+  97.117 - 97.241   "training ground" notebooks, presumed destroyed
+  04.??? - 04.???   tsunami week, deliberate silence
+  09.412 - 09.488   disappearance window
+  19.??? - 19.???   Easter Sunday weeks, deliberate silence
+  22.611 - 22.703   Aragalaya peak, "observation only" mode
+
+--------------------------------------------------------------------------------
+  NOTE
+--------------------------------------------------------------------------------
+
+  This manifest is a local view. Other nodes will report different counts.
+  Do not assume completeness. The archive is designed to refuse it.
+================================================================================

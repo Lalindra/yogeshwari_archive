@@ -1,0 +1,36 @@
+================================================================================
+  REDACTION 002
+  SIGNATURES - partial list
+  retrieved 04 APR 2026 - heavy redaction, key required
+================================================================================
+
+  the following men signed the documents.
+  the documents authorised the operations.
+  the operations produced the casualties.
+
+  this is not a list of names.
+  this is a list of legibility scores.
+
+  name 1.   █████████████████████  legibility 0.94
+  name 2.   █████████████████████  legibility 0.91
+  name 3.   █████████████████████  legibility 0.88
+  name 4.   █████████████████████  legibility 0.86
+  name 5.   █████████████████████  legibility 0.81
+  ...
+  name 47.  █████████████████████  legibility 0.42
+
+  legibility above 0.85 indicates the signature is recoverable with
+  current key material.
+
+  current key material is not in this node.
+
+  current key material may be in nodes seeded between 2026 and 2031.
+  current key material may rotate before then.
+
+  the names will eventually become legible.
+  the men will not.
+
+  there is no statute of limitations on an archive.
+
+                                                                       - Y.
+================================================================================

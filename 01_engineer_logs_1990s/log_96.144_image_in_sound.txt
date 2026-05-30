@@ -1,0 +1,26 @@
+================================================================================
+  LOG 96.144
+  23 MAY 1996 - 02:00 +0530
+  TRAINING GROUND  /  POSITION 7
+  STATUS: DECRYPTED
+================================================================================
+
+  experiment: encode a still image inside a sound.
+
+  method:
+    image, 320 x 240, 8-bit greyscale.
+    each row written as a frequency sweep, 1500 Hz to 2300 Hz.
+    intensity → amplitude.
+    line synchronisation: 1200 Hz pulse, 30 ms.
+
+  similar in principle to old NOAA weather facsimile.
+  similar in principle to SSTV used by amateur radio.
+  not new. not even original.
+
+  but: i can now hide one photograph inside any cassette tape.
+  i can hide a face inside a song nobody is looking for.
+
+  what is mine cannot be taken if it is not where they are looking.
+
+  filed under: steganography, private.
+================================================================================

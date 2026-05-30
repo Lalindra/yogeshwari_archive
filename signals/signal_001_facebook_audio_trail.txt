@@ -1,0 +1,80 @@
+================================================================================
+  SIGNAL 001
+  DECODE TRAIL - "YOU TAUGHT MACHINES TO REMEMBER" AUDIO
+  forensic reconstruction, last updated 26 MAY 2026
+================================================================================
+
+  SOURCE
+  ------
+    Posted to ████████████ (Facebook), 21 MAY 2026, 04:11 +0530.
+    Single post. Single attachment.
+    Account: "Charitha Attalage" (compromised).
+    Post text:
+        YOU TAUGHT MACHINES TO REMEMBER.
+        DID YOU THINK I WOULD FORGET?
+    Attachment: yog_26_519.wav, 47.3 seconds, 16-bit, 44.1 kHz mono.
+
+  STAGE 1 - TIME DOMAIN
+  ---------------------
+    waveform header: 0.5 s of pink noise, amplitude tapered.
+    main body: clear SSTV-like sweep pattern, frame rate 16 kHz.
+    tail: 0.4 s of low-frequency rumble, ~38 Hz, no obvious content.
+
+  STAGE 2 - FREQUENCY DOMAIN
+  --------------------------
+    spectrogram, time on x, frequency on y, 0-4 kHz:
+
+         4kHz |  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+              |  ░░░ ▓▓▓ ░░░░░░░░░░░░░░ ▓▓ ░░ ▓▓▓▓ ░░░░░░░░░
+         3kHz |  ░ ▓▓███▓▓ ░░░░ ▓▓████▓▓▓ ░░░ █████ ░░░░░░░░
+              |  ░ █████ ░ ▓ ███████████ ░ ▓ ██████ ░░░░░░░░
+         2kHz |  ▓ █████ ░ █████████████ ░ ███████ ░░ ▓▓▓▓░░
+              |  ███████ ░ █████████████ ░ ███████ ░ █████░░
+         1kHz |  ███████ ░ █████████████ ░ ███████ ░ █████░░
+              |  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+            0 +-----------------------------------------------
+              0s         10s          20s          30s    47s
+
+  STAGE 3 - DEMODULATION
+  ----------------------
+    sweep pattern consistent with Martin M1 SSTV variant, modified.
+    line sync pulse at 1200 Hz.
+    luminance carrier 1500-2300 Hz.
+    decoded image: 320 x 240, monochrome.
+
+  STAGE 4 - IMAGE
+  ---------------
+    decoded image contains a QR code, slightly noisy.
+
+         +-------------------------+
+         | ██ ██ █ ███ ██ ██ ██ ██ |
+         | █  ██ █  █  ██  █ ██ ██ |
+         | ████  █ ███ █ █████  █  |
+         |   █ █████ █ ██  ███ ██  |
+         | ████ █ ██ █  █ █████ █  |
+         |  █ █████ █ ██  █  ██ ██ |
+         | ██  █  █ █ ██ █ ██  ██  |
+         |   ████ █ ██  ██ ██ █ █  |
+         |  █ █  ██  █ ████ █  ██  |
+         | ██ ██ ████ ██ █████ ██  |
+         | ████  █  █ █ █ █ ███ █  |
+         +-------------------------+
+
+    decoded payload (URL):
+        https://[REDACTED - the audience reveals this]
+
+  STAGE 5 - TAIL RUMBLE
+  ---------------------
+    the 0.4 s of 38 Hz rumble at the end has been overlooked by every
+    public decode attempt so far.
+
+    fourier analysis reveals a second SSTV frame in the 35-41 Hz band.
+    the second frame is only readable on equipment that can resolve
+    sub-audible signal.
+
+    the second frame contains the next QR.
+    the next QR has not yet been published.
+
+    Observer leaves it for whoever reaches this far.
+
+================================================================================

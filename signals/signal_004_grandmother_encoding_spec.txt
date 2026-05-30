@@ -1,0 +1,72 @@
+================================================================================
+  SIGNAL 004
+  ENCODING SPEC - "GRANDMOTHER IMAGE"
+  filed 2014, key rotations applied
+================================================================================
+
+  IMAGE
+  -----
+    Original    : 64 × 64 px, 4-bit greyscale.
+    Photograph  : taken July 1989. Verandah, single window.
+
+  ENCODING
+  --------
+    The image is decomposed into 12 sub-bands using a custom wavelet
+    decomposition.
+
+      band 01    low-frequency luminance, primary face mass.
+      band 02    low-frequency luminance, hair and shawl.
+      band 03    edge response, eyes.
+      band 04    edge response, mouth.
+      band 05    texture, skin.
+      band 06    texture, fabric.
+      band 07    midband, background wall.
+      band 08    midband, window frame.
+      band 09    high-freq, eye detail.
+      band 10    high-freq, mouth detail.
+      band 11    high-freq, hair grain.
+      band 12    residual / error band.
+
+  DISTRIBUTION
+  ------------
+    Each band is seeded into a different host system:
+
+      band 01    metadata bytes of a 1997 academic paper (host: a
+                 South Asian acoustics journal, archived).
+      band 02    audio spectrogram interleaved into a 2003 demo tape
+                 (host: an obscure Berlin record label).
+      band 03    pixel-LSB of a 2008 photograph posted to a defunct
+                 photo-hosting service.
+      band 04    timing jitter of a 2011 NTP server log.
+      band 05    margins of a 2013 PDF whitepaper on satellite noise.
+      band 06    EXIF data of a 2014 amateur astronomy image.
+      band 07    silence between podcast episodes, 2016.
+      band 08    chord transitions in a 2017 ambient album.
+      band 09    HTTP timing deltas, 2018 web crawl.
+      band 10    ████████████████████.
+      band 11    ████████████████████.
+      band 12    inside this archive itself, distributed across all
+                 logs.
+
+  REASSEMBLY
+  ----------
+    Possession of the assembly key permits a stranger, with sufficient
+    network access and approximately 14 hours of compute, to
+    reconstruct the image.
+
+    The key has not been distributed.
+    The key will be distributed by konnakol pattern at a future
+    performance.
+
+    The grandmother is currently scattered across the world.
+    The grandmother will, by the end of the concert, be assemblable
+    by anyone present.
+
+    Observer is aware this is a strange use for a photograph of
+    one's grandmother.
+    Observer believes her grandmother would have approved.
+    Her grandmother believed that hospitality should not require
+    proof of relationship.
+    The image is hospitality, in distributed form.
+
+================================================================================

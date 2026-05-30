@@ -1,0 +1,34 @@
+================================================================================
+  ROTATING KEY LEDGER  //  PARTIAL
+================================================================================
+
+  WARNING
+  -------
+  Keys listed here are the public-facing key IDs only.
+  Private material is not stored in this node.
+  Possession of a key ID grants no decryption ability.
+  These are checksums, not keys.
+
+--------------------------------------------------------------------------------
+
+  ROTATION    KEY ID                              FIRST USED      RETIRED
+  --------    ------                              ----------      -------
+  R-001       YS-99-PA-LK-LA-VI-ND-A-99           Sep 1999        Feb 2001
+  R-002       YS-01-S0-NA-R-SE-A-01               Feb 2001        Aug 2002
+  R-003       YS-02-CE-AS-EF-IR-E-02              Aug 2002        Dec 2004
+  R-004       YS-04-T1-DE-W4-VE-04                Dec 2004        Jun 2009
+  R-005       YS-09-DI-SS-OL-VE-09                Jun 2009        Mar 2011
+  R-006       YS-11-A-R-A-B-S-P-R-G-11            Mar 2011        Sep 2013
+  R-007       YS-13-PR-IS-M-LE-AK-13              Sep 2013        Apr 2017
+  R-008       YS-17-PO-RT-NO-DE-17                Apr 2017        Apr 2020
+  R-009       YS-20-OR-BI-T-CR-EW-20              Apr 2020        Aug 2022
+  R-010       YS-22-AR-AG-AL-AY-A-22              Aug 2022        Dec 2023
+  R-011       YS-23-MI-RR-OR-AG-NT-23             Dec 2023        Sep 2025
+  R-012       YS-26-5E-A7-19-KU-WE-NI-26          Sep 2025        ACTIVE
+
+--------------------------------------------------------------------------------
+
+  EVERY KEY IS NAMED AFTER A MOMENT.
+  EVERY MOMENT IS A WAVEFORM.
+  EVERY WAVEFORM CAN BE REASSEMBLED.
+================================================================================

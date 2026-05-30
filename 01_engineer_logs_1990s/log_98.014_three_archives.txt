@@ -1,0 +1,30 @@
+================================================================================
+  LOG 98.014
+  14 JAN 1998 - 02:00 +0530
+  ████████  /  ████████
+  STATUS: DECRYPTED
+================================================================================
+
+  decision: three copies.
+
+  COPY A   - what the men want to see.
+             clean. operational. nothing private.
+             will be inspected. will be photographed.
+             will be confiscated when convenient.
+
+  COPY B   - what i will not lose.
+             technical, complete, on physical media i can carry.
+             will be hidden in places i can re-enter as a stranger.
+
+  COPY C   - what i will not allow to die.
+             encoded into the world itself.
+             songs, photographs, weather facsimiles, FTP archives in
+             countries whose alphabets are not mine.
+
+  COPY A will be lost. that is the point.
+  COPY B may be lost. that is the cost.
+  COPY C cannot be lost. not because it is hidden.
+         because it is everywhere.
+
+  filed under: archive design.
+================================================================================

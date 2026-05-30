@@ -1,0 +1,67 @@
+================================================================================
+  SIGNAL 006
+  SILENCE MEASUREMENT PROTOCOL
+  filed 2022
+================================================================================
+
+  PURPOSE
+  -------
+    A standardised method for measuring the quality of silence in a
+    given environment, for purposes of archive seeding and personal
+    practice.
+
+  EQUIPMENT
+  ---------
+    Calibrated microphone, sensitivity better than -90 dBV.
+    Time reference accurate to ±1 ms.
+    Operator with stable breathing rate.
+
+  METHOD
+  ------
+    1.  At the chosen location, between 02:00 and 04:00 local time.
+    2.  Microphone elevated 1.5 m above ground.
+    3.  Capture 10 minutes of continuous audio.
+    4.  Subtract the operator's own breathing signature (pre-recorded).
+    5.  Identify three independent metrics:
+
+        Q_AMB   absolute ambient floor (dBV)
+        Q_AC    presence of artificial carriers (count per 10 min)
+        Q_PSY   subjective settling time (operator self-reported,
+                seconds, until thought-frequency stabilises)
+
+  CLASSIFICATIONS
+  ---------------
+    Class A   Q_AMB ≤ -90 dBV, Q_AC = 0, Q_PSY ≤ 60 s.
+    Class B   Q_AMB ≤ -80 dBV, Q_AC ≤ 1, Q_PSY ≤ 180 s.
+    Class C   Q_AMB ≤ -70 dBV, Q_AC ≤ 5, Q_PSY ≤ 600 s.
+    Class D   Q_AMB > -70 dBV, Q_AC > 5, Q_PSY > 600 s.
+
+    most modern urban environments are Class D.
+    most monastery courtyards are Class B.
+    a few wilderness sites Observer has tested are Class A.
+    one location is Class A++. Observer will not publish it.
+
+  OBSERVATION
+  -----------
+    Q_PSY is the only metric that the modern world has actively
+    optimised against. The modern world has built the entire
+    consumer technology stack to maximise Q_PSY.
+
+    Q_PSY can be reduced.
+    Q_PSY is the cheapest of the three to improve.
+    Q_PSY is the most expensive to maintain.
+
+  PRACTICE
+  --------
+    The archive recommends performing a Q_PSY self-measurement
+    once per quarter.
+
+    If your Q_PSY exceeds 600 s, the archive recommends withdrawing
+    from broadcast environments until it returns to 180 s.
+
+    If you cannot remember the last time your Q_PSY was below 60 s,
+    you have already lost the practice.
+    The practice can be regained.
+    The path back is described in the OBSERVATIONS section.
+
+================================================================================

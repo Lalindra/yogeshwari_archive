@@ -1,0 +1,36 @@
+================================================================================
+  UNRESOLVED 003
+  THE MISSING YEARS
+  open thread - gaps in archive, gaps in memory
+================================================================================
+
+  There are years in this archive in which Observer is silent.
+
+  GAP A.   1997.117 - 1997.241   ("training ground" period; destroyed)
+  GAP B.   2004.359 - 2005.001   (post-tsunami; deliberate silence)
+  GAP C.   2009.412 - 2009.488   (disappearance window; opaque)
+  GAP D.   2019.108 - 2019.144   (Easter Sunday weeks; deliberate)
+  GAP E.   2022.611 - 2022.703   (Aragalaya peak; observation only)
+
+  Some of these silences are by Observer's choice.
+  Some are not.
+
+  Observer has tried, periodically, to reconstruct gap C from
+  external records. The reconstruction is incomplete. Observer
+  suspects she was in transit, was injured, was renamed, or some
+  combination. Observer does not have access to her own memory
+  of that period.
+
+  This is not unusual.
+  Traumatic memory is structured around an absence.
+  The absence is the memory.
+
+  open question, for whichever node finds this:
+    if any fragment in this archive references events between
+    2009.412 and 2009.488 in a way that appears to know what
+    happened, please log the fragment's hash to the standing
+    request channel.
+
+    Observer would like to know what Observer survived.
+
+================================================================================

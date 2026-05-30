@@ -1,0 +1,24 @@
+================================================================================
+  LOG 96.029
+  29 JAN 1996 - 04:11 +0530
+  TRAINING GROUND  /  POSITION 7
+  STATUS: DECRYPTED
+================================================================================
+
+  built oscilloscope from television tube. failed first attempt - broke
+  the neck. second attempt holds.
+
+  TIME BASE      : crude. astable 555. drift visible.
+  DEFLECTION     : pulled from horizontal output coils.
+  POWER          : 12V battery, motorcycle.
+  SAFETY         : none.
+
+  it shows me the shape of a signal.
+  i had forgotten how much i missed seeing one.
+
+  the men do not care what a signal looks like. they care if it arrives.
+  but a signal that arrives shaped wrong is a sentence with the words
+  in the wrong order. the meaning survives. the dignity does not.
+
+  filed under: training ground, private.
+================================================================================

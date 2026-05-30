@@ -1,0 +1,63 @@
+================================================================================
+  SIGNAL 003
+  KONNAKOL AS CARRIER WAVE - TECHNICAL NOTE
+  filed c. 2024
+================================================================================
+
+  THESIS
+  ------
+    Konnakol syllables can be used to encode an AES-256 key.
+
+  CONSTRUCTION
+  ------------
+    32 base konnakol phonemes (extended set).
+    each phoneme = one base-32 character.
+    a 256-bit key = 52 base-32 characters = 52 konnakol syllables.
+    one full key = approximately 9 seconds of recited konnakol at
+    tempo 220.
+
+  EXAMPLE (REDACTED KEY)
+  ----------------------
+    ta - ki - ta - ta - ka - di - mi - ta - ki - ta -
+    ta - ki - ta - ta - ka - di - mi - ta - ki - ta -
+    ta - ka - di - mi - ta - ka - ja - nu - ta - ka -
+    ja - nu - ta - ka - di - mi - ta - ki - ta - ta -
+    ka - di - mi - ta - ka - ja - nu - ta - ka - ja -
+    nu - ta
+
+  PROPERTIES
+  ----------
+    - The key is auditory. A trained performer can recite it from
+      memory after one hearing.
+    - The key cannot be intercepted by text-based surveillance.
+    - The key transmits through compressed audio without loss.
+    - The key embeds naturally into Karnatic and South Asian
+      percussion contexts.
+    - The key is, by design, indistinguishable from music.
+
+  CONSEQUENCE
+  -----------
+    A piece of music performed in front of a sufficiently large
+    audience can transmit cryptographic key material to every
+    listener simultaneously.
+
+    The audience does not need to know.
+    The audience does not need to remember.
+    The audience needs only to have heard the rhythm pass through
+    them.
+
+    Whichever device in the audience's pocket was recording will
+    have the key.
+    The recording will not be flagged by any surveillance system,
+    because the recording sounds like music.
+
+    Music is the only legal mass key distribution channel that
+    exists.
+
+  NOTE
+  ----
+    Observer is filing this in case it is needed.
+    Observer is not the only person who has noticed.
+    Observer is, however, one of the first.
+
+================================================================================

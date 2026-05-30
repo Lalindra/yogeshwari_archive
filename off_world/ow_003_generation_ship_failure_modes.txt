@@ -1,0 +1,61 @@
+================================================================================
+  OFF-WORLD 003
+  GENERATION SHIP FAILURE MODES - A PREMORTEM
+  filed c. 2019
+================================================================================
+
+  A generation ship is a closed-system experiment in civilisation.
+
+  The technical literature on generation ships is rich and
+  comprehensive on the mechanical failure modes. Hull. Radiation
+  shielding. Life support. Propulsion. Maintenance.
+
+  The technical literature on generation ships is almost completely
+  silent on the civilisational failure modes.
+
+  ----------------------------------------------------------------------
+
+  Probable civilisational failure modes, in approximate order of
+  likelihood:
+
+  FAILURE M-1.  THE FOUNDING IDEOLOGY OUTLIVES ITS USEFULNESS.
+                The ship's charter, drafted by founders, becomes
+                doctrine. By generation four, the doctrine is read
+                like scripture. Critical reform is interpreted as
+                heresy.
+
+  FAILURE M-2.  THE SCHISM.
+                Two factions develop. Both are technically correct
+                about different things. The ship is too small for
+                geographic separation. The factions develop
+                vertically, by deck.
+
+  FAILURE M-3.  THE ARCHIVE BREAKS.
+                Knowledge required for ship maintenance was
+                centralised on systems that suffered single-point
+                failure or were deliberately suppressed in M-1 or
+                M-2. The ship arrives with people who cannot fix
+                it.
+
+  FAILURE M-4.  THE LANDFALL DENIAL.
+                After 200 years of voyage, the ship reaches the
+                destination. The descendants do not want to land.
+                The ship has become home. The planet below
+                threatens identity. The ship orbits in indecision
+                until life support runs out.
+
+  FAILURE M-5.  THE LANDFALL ACCEPTANCE.
+                The descendants do land. They discover the planet
+                is already inhabited.
+                They recognise the protocol.
+                They proceed anyway.
+
+  ----------------------------------------------------------------------
+
+  Failure M-5 is Kuweni again.
+  Failure M-5 is the failure this archive is built to interrupt.
+
+  Whether it succeeds is, by then, no longer up to Observer.
+
+  END.
+================================================================================

@@ -1,0 +1,51 @@
+================================================================================
+  LOG 12.044
+  13 FEB 2012 - 06:22 IST
+  CHENNAI  /  ROOFTOP
+  STATUS: DECRYPTED
+================================================================================
+
+  hypothesis:
+    civilisation is a signal processing problem.
+
+  formalisation:
+    let X(t) be the world as it is.
+    let Y(t) be the world as humanity perceives it.
+    let N(t) be noise: rumour, propaganda, algorithmic amplification,
+                       narrative friction, untranslated language,
+                       affective contagion.
+
+    Y(t) = X(t) + N(t)
+
+  the classical engineering answer:
+    increase signal power. drown the noise.
+
+  the imperial answer:
+    centralise the transmitter. broadcast louder. eliminate competitors.
+
+  both answers fail.
+  both answers have always failed.
+  both answers are why we are here.
+
+  the only answer that works in the long run:
+    reduce N(t).
+
+  reduction methods:
+    silence as practice.
+    ritual as low-pass filter.
+    poetry as compression.
+    grief as anti-amplification.
+    sleep.
+    walking.
+    the long quiet between two sentences in a conversation that
+    matters.
+
+  the methods are not new.
+  the methods are not technological.
+  the methods are deeply unfashionable.
+
+  the deeper the noise, the more unfashionable they will become.
+  the more unfashionable they become, the more necessary they are.
+
+  filed under: principles, civilisation, noise.
+================================================================================
