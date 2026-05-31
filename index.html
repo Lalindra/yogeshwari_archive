@@ -922,13 +922,15 @@
   <aside class="right">
     <div class="block" id="surfacing-block">
       <h4>● NEXT SURFACING</h4>
-      <div class="kv"><span>WINDOW</span><b>20 - 21 JUN 2026</b></div>
+      <div class="kv"><span>FRAMES</span><b>26.171 &nbsp;↔&nbsp; 26.172</b></div>
       <div class="kv"><span>STATUS</span><b id="surf-status">PENDING</b></div>
-      <div class="kv"><span>COUNTDOWN</span><b id="surf-tminus">T - ?? DAYS</b></div>
+      <div class="kv"><span>T-MINUS</span><b id="surf-tminus">█ █ █</b></div>
+      <div class="kv"><span>CARRIER</span><b>1420.4556 MHz</b></div>
+      <div class="kv"><span>LOCALE</span><b>██████████ +0530</b></div>
       <div style="margin-top: 10px; padding: 8px; background: var(--bg-panel-2); border-left: 2px solid var(--accent); font-size: 11px; line-height: 1.55; color: var(--text-dim);" id="surf-note">
-        the second surfacing of the queen. expected at LOG 26.171.
+        second surfacing of the queen. expected at FRAME 26.171.
       </div>
-      <a data-section="logs" data-path="04_signal_logs_2020_2026/log_26.171_awaiting_transmission.txt" style="display:block; margin-top:8px; font-size:10px; letter-spacing:0.15em;">OPEN LOG 26.171 ▸</a>
+      <a data-section="logs" data-path="04_signal_logs_2020_2026/log_26.171_awaiting_transmission.txt" style="display:block; margin-top:8px; font-size:10px; letter-spacing:0.15em;">OPEN ⟁ FRAME ▸</a>
     </div>
 
     <div class="block">
@@ -1288,17 +1290,21 @@ function updateSurfacingBlock() {
   var nEl  = document.getElementById("surf-note");
   if (!stEl || !tEl || !nEl) return;
   if (now < startUTC) {
+    var hrs = Math.ceil((startUTC - now) / 3600000);
     var days = Math.ceil((startUTC - now) / 86400000);
     stEl.textContent = "PENDING";
     stEl.style.color = "var(--accent)";
-    tEl.textContent = "T - " + days + " DAY" + (days === 1 ? "" : "S");
-    nEl.textContent = "the second surfacing of the queen. expected at LOG 26.171.";
+    // Cryptic countdown: hex day count + days. The frame number does
+    // the real work; the wrapper does not announce the calendar date.
+    var hex = "0x" + days.toString(16).toUpperCase().padStart(2, "0");
+    tEl.textContent = hex + " // " + days + "d " + (hrs % 24) + "h";
+    nEl.textContent = "second surfacing of the queen. expected at FRAME 26.171.";
     block.classList.remove("surf-active");
   } else if (now < endUTC) {
     var isNight2 = now >= midUTC;
     stEl.textContent = "⟁ SURFACING";
     stEl.style.color = "var(--mx-c)";
-    tEl.textContent  = isNight2 ? "NIGHT 02 / 02" : "NIGHT 01 / 02";
+    tEl.textContent  = isNight2 ? "FRAME 26.172 // 02 OF 02" : "FRAME 26.171 // 01 OF 02";
     nEl.textContent  = isNight2
       ? "the second night confirms the first. the queen takes two breaths to land."
       : "the apology arrives here. the breath is being acknowledged tonight.";
@@ -1306,7 +1312,7 @@ function updateSurfacingBlock() {
   } else {
     stEl.textContent = "ARCHIVED";
     stEl.style.color = "var(--text-dim)";
-    tEl.textContent  = "20 - 21 JUN 2026";
+    tEl.textContent  = "⟁ FRAMES CLOSED";
     nEl.textContent  = "second surfacing complete. third surfacing pending. see PROPHECY 009.";
     block.classList.remove("surf-active");
   }
