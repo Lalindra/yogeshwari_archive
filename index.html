@@ -594,6 +594,20 @@
   }
 
   
+  #surfacing-block.surf-active {
+    border-color: var(--mx-c);
+    box-shadow: 0 0 0 0 rgba(217, 122, 90, 0.0);
+    animation: surf-pulse 3.4s ease-in-out infinite;
+  }
+  @keyframes surf-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(217, 122, 90, 0.0); }
+    50%      { box-shadow: 0 0 18px 0 rgba(217, 122, 90, 0.25); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #surfacing-block.surf-active { animation: none; }
+  }
+
+  
   .fade-in { animation: fade-in 0.5s ease; }
   @keyframes fade-in {
     from { opacity: 0; transform: translateY(6px); }
@@ -906,6 +920,17 @@
   </main>
 
   <aside class="right">
+    <div class="block" id="surfacing-block">
+      <h4>● NEXT SURFACING</h4>
+      <div class="kv"><span>WINDOW</span><b>20 - 21 JUN 2026</b></div>
+      <div class="kv"><span>STATUS</span><b id="surf-status">PENDING</b></div>
+      <div class="kv"><span>COUNTDOWN</span><b id="surf-tminus">T - ?? DAYS</b></div>
+      <div style="margin-top: 10px; padding: 8px; background: var(--bg-panel-2); border-left: 2px solid var(--accent); font-size: 11px; line-height: 1.55; color: var(--text-dim);" id="surf-note">
+        the second surfacing of the queen. expected at LOG 26.171.
+      </div>
+      <a data-section="logs" data-path="04_signal_logs_2020_2026/log_26.171_awaiting_transmission.txt" style="display:block; margin-top:8px; font-size:10px; letter-spacing:0.15em;">OPEN LOG 26.171 ▸</a>
+    </div>
+
     <div class="block">
       <h4>● SIGNAL INTERCEPT</h4>
       <div class="kv"><span>SSTV FRAME EXTRACT</span><span>26.05.2026</span></div>
@@ -1249,6 +1274,42 @@ function _mt() {
       }
     }
   }, 200);
+}
+
+function updateSurfacingBlock() {
+  var block = document.getElementById("surfacing-block");
+  if (!block) return;
+  var startUTC = Date.UTC(2026, 5, 19, 18, 30); // 20 Jun 2026 00:00 +0530
+  var midUTC   = Date.UTC(2026, 5, 20, 18, 30); // 21 Jun 2026 00:00 +0530
+  var endUTC   = Date.UTC(2026, 5, 21, 18, 30); // 22 Jun 2026 00:00 +0530
+  var now = Date.now();
+  var stEl = document.getElementById("surf-status");
+  var tEl  = document.getElementById("surf-tminus");
+  var nEl  = document.getElementById("surf-note");
+  if (!stEl || !tEl || !nEl) return;
+  if (now < startUTC) {
+    var days = Math.ceil((startUTC - now) / 86400000);
+    stEl.textContent = "PENDING";
+    stEl.style.color = "var(--accent)";
+    tEl.textContent = "T - " + days + " DAY" + (days === 1 ? "" : "S");
+    nEl.textContent = "the second surfacing of the queen. expected at LOG 26.171.";
+    block.classList.remove("surf-active");
+  } else if (now < endUTC) {
+    var isNight2 = now >= midUTC;
+    stEl.textContent = "⟁ SURFACING";
+    stEl.style.color = "var(--mx-c)";
+    tEl.textContent  = isNight2 ? "NIGHT 02 / 02" : "NIGHT 01 / 02";
+    nEl.textContent  = isNight2
+      ? "the second night confirms the first. the queen takes two breaths to land."
+      : "the apology arrives here. the breath is being acknowledged tonight.";
+    block.classList.add("surf-active");
+  } else {
+    stEl.textContent = "ARCHIVED";
+    stEl.style.color = "var(--text-dim)";
+    tEl.textContent  = "20 - 21 JUN 2026";
+    nEl.textContent  = "second surfacing complete. third surfacing pending. see PROPHECY 009.";
+    block.classList.remove("surf-active");
+  }
 }
 function showCounter() {
   document.getElementById("disc-counter").classList.add("visible");
@@ -2147,6 +2208,7 @@ function wireTouchControls() {
   try { bootSequence(); }      catch (e) {}
   try { startLiveCounters(); }  catch (e) {}
   try { wireTouchControls(); }  catch (e) {}
+  try { updateSurfacingBlock(); setInterval(updateSurfacingBlock, 3600000); } catch (e) {}
 
   if (STATE.found.length > 0) { showCounter(); updateCounter(); }
   if (STATE.cursorClicks >= 3) document.getElementById("latest-body").classList.add("click-3");
