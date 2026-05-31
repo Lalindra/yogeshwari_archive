@@ -137,11 +137,38 @@
     color: var(--text); overflow: auto;
     position: relative;
   }
-  .reader-close {
-    position: sticky; top: 0; float: right; background: none; color: var(--warn);
-    border: 1px solid var(--warn); padding: 4px 10px; cursor: pointer;
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em;
+  
+  .reader-bar {
+    position: sticky; top: 0; z-index: 2;
+    display: flex; align-items: center; gap: 10px;
+    margin: -28px -36px 20px;
+    padding: 12px 20px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
   }
+  .r-nav {
+    background: none; border: 1px solid var(--border-2);
+    color: var(--text-dim); font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.15em;
+    padding: 6px 12px; cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .r-nav:not(:disabled):hover {
+    color: var(--accent); border-color: var(--accent);
+  }
+  .r-nav:disabled { opacity: 0.28; cursor: default; }
+  .r-pos {
+    font-size: 10px; color: var(--text-vdim); letter-spacing: 0.18em;
+    margin: 0 auto;  
+    font-variant-numeric: tabular-nums;
+  }
+  .reader-close {
+    background: none; color: var(--warn);
+    border: 1px solid var(--warn); padding: 6px 12px; cursor: pointer;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+  .reader-close:hover { background: rgba(200, 80, 74, 0.12); }
   .reader pre { margin: 0; font-family: inherit; white-space: pre-wrap; }
 
   
@@ -613,6 +640,14 @@
     .reader-inner { padding: 20px 16px; max-width: 100%; min-height: 100%; }
     .reader pre { font-size: 12px; }
     .reader-close { padding: 8px 14px; }     
+    .reader-bar {
+      margin: -20px -16px 16px;
+      padding: 10px 14px;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .r-nav { padding: 8px 10px; font-size: 10px; }
+    .r-pos { font-size: 9px; margin: 0 4px; }
 
     
     #cli.open { height: 60vh; }
@@ -894,7 +929,12 @@
 
 <div class="reader" id="reader">
   <div class="reader-inner">
-    <button class="reader-close" onclick="closeReader()">CLOSE ✕</button>
+    <div class="reader-bar">
+      <button id="r-prev" class="r-nav" title="previous (←)" type="button">◂ PREV</button>
+      <span id="r-pos" class="r-pos"></span>
+      <button id="r-next" class="r-nav" title="next (→)" type="button">NEXT ▸</button>
+      <button class="reader-close" onclick="closeReader()" type="button">CLOSE ✕</button>
+    </div>
     <div id="reader-body"></div>
   </div>
 </div>
@@ -1249,14 +1289,55 @@ function openEntry(sectionId, path) {
     }
   }
 
+  
+  const _wasOpen = document.getElementById("reader").classList.contains("open");
   document.getElementById("reader-body").innerHTML = body;
   document.getElementById("reader").classList.add("open");
-  lockScroll(true);
+  
+  _readerCurrent = { section: sectionId, path: path };
+  updateReaderNav();
+  
+  try { document.querySelector(".reader-inner").scrollTop = 0; } catch(e){}
+  if (!_wasOpen) lockScroll(true);
   _rm();
 }
 function closeReader() {
   document.getElementById("reader").classList.remove("open");
+  _readerCurrent = null;
   lockScroll(false);
+}
+
+
+let _readerCurrent = null;  // { section, path } | null
+function updateReaderNav() {
+  const prev = document.getElementById("r-prev");
+  const next = document.getElementById("r-next");
+  const pos  = document.getElementById("r-pos");
+  if (!_readerCurrent) {
+    if (prev) prev.disabled = true;
+    if (next) next.disabled = true;
+    if (pos)  pos.textContent = "";
+    return;
+  }
+  const arr = ARCHIVE[_readerCurrent.section] || [];
+  const idx = arr.findIndex(e => e.path === _readerCurrent.path);
+  if (idx < 0) {
+    if (prev) prev.disabled = true;
+    if (next) next.disabled = true;
+    if (pos)  pos.textContent = "";
+    return;
+  }
+  if (prev) prev.disabled = (idx <= 0);
+  if (next) next.disabled = (idx >= arr.length - 1);
+  if (pos)  pos.textContent = (idx + 1) + " / " + arr.length;
+}
+function navReader(dir) {
+  if (!_readerCurrent) return;
+  const arr = ARCHIVE[_readerCurrent.section] || [];
+  const idx = arr.findIndex(e => e.path === _readerCurrent.path);
+  const ni  = idx + dir;
+  if (ni < 0 || ni >= arr.length) return;
+  openEntry(_readerCurrent.section, arr[ni].path);
 }
 
 
@@ -1653,6 +1734,9 @@ document.addEventListener("click", (ev) => {
       return;
     }
   }
+  // Reader nav (prev / next within current section).
+  if (ev.target.closest("#r-prev")) { navReader(-1); return; }
+  if (ev.target.closest("#r-next")) { navReader(+1); return; }
   // Emblem → enter THE SILENCE (does NOT open SIGNAL 008; that is the
   // reader's own to discover).
   if (ev.target.closest("#emblem-link")) { startSilence(); return; }
@@ -1689,9 +1773,15 @@ document.addEventListener("click", (ev) => {
 });
 
 function _oh() {
+  const _wasOpen = document.getElementById("reader").classList.contains("open");
   document.getElementById("reader-body").innerHTML =
     '<pre>' + escapeHTML(dec(HIDDEN.log_26_520.content)) + '</pre>';
   document.getElementById("reader").classList.add("open");
+  
+  _readerCurrent = null;
+  updateReaderNav();
+  try { document.querySelector(".reader-inner").scrollTop = 0; } catch(e){}
+  if (!_wasOpen) lockScroll(true);
 }
 
 document.addEventListener("keydown", (ev) => {
@@ -1703,11 +1793,17 @@ document.addEventListener("keydown", (ev) => {
   const sgOn = document.getElementById("sg");
   if (sgOn && sgOn.classList.contains("on")) return;
 
-  // Reader Escape
+  // Reader Escape + arrow nav (only when reader is open and no CLI active).
+  const readerOpen = document.getElementById("reader").classList.contains("open");
+  const cliOpenNow = document.getElementById("cli").classList.contains("open");
   if (ev.key === "Escape") {
-    if (document.getElementById("cli").classList.contains("open")) cliClose();
-    else if (document.getElementById("reader").classList.contains("open")) closeReader();
+    if (cliOpenNow) cliClose();
+    else if (readerOpen) closeReader();
     return;
+  }
+  if (readerOpen && !cliOpenNow && ev.target.tagName !== "INPUT") {
+    if (ev.key === "ArrowLeft")  { navReader(-1); ev.preventDefault(); return; }
+    if (ev.key === "ArrowRight") { navReader(+1); ev.preventDefault(); return; }
   }
   // Backtick toggles CLI
   if (ev.key === "`" || ev.key === "~") {
