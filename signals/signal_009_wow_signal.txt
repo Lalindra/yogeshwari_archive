@@ -1,0 +1,92 @@
+================================================================================
+  SIGNAL 009
+  THE WOW! SIGNAL, RE-ANNOTATED
+  forensic review of an artefact from 15 AUG 1977
+================================================================================
+
+  PROVENANCE
+  ----------
+    On 15 August 1977, the Big Ear radio telescope at Ohio State
+    received a 72-second narrowband signal at 1420.4556 MHz, six
+    standard deviations above the noise floor, with no plausible
+    terrestrial source.
+
+    The astronomer Jerry R. Ehman circled the printout in red ink
+    and wrote, in the margin, the word "Wow!".
+
+    The signal has never repeated. It has been searched for, by
+    every major facility, for the better part of fifty years.
+    It has not been found.
+
+    The original printout, with Ehman's red annotation, is preserved
+    at the Ohio Historical Society.
+
+  ORTHODOX READING
+  ----------------
+    The signal had the spectral shape one would expect from a
+    narrowband artificial source. Published analyses treat it as
+    either (a) genuinely artificial and unrepeated, or (b) a
+    passing reflection off space debris in a previously
+    undocumented orbit. No consensus.
+
+  ------------------------------------------------------------------------
+
+  OBSERVER'S READING
+  ------------------
+    Observer has spent eleven months with a high-resolution scan
+    of the printout, mostly at night.
+
+    The signal is not the printout.
+    The signal is the pattern of the printout
+      plus the noise around the printout
+      plus Jerry Ehman's red mark
+      plus the margin of the paper
+      plus the time the printout was made
+      plus the trajectory of the page since.
+
+    None of those, in isolation, is a message.
+    Together, they are an envelope.
+
+    The signal was the act of making one human pick up a red pen
+    at 22:16 EDT on a Monday in Ohio.
+
+    Whatever sent the burst did not send seventy-two seconds of
+    narrowband.
+    It sent Ehman picking up a pen.
+    The seventy-two seconds were the mechanism.
+    The pen-pickup was the payload.
+
+  CONSEQUENCE
+  -----------
+    A communication system that delivers its payload as a human
+    action is impossible to detect by listening for the carrier.
+
+    The carrier always arrives wrapped in noise.
+    The payload always arrives as a decision.
+
+    A civilisation that has mastered this kind of communication
+    will look, from any radio telescope, like silence.
+    From every individual receiving the message, it will look
+    like a small private idea.
+
+    They are not the same idea.
+    They are pieces of the same message arriving in different
+    interiors at the same instant.
+
+    Observer suspects this happens approximately eleven times per
+    second somewhere on the surface of this planet.
+
+  NOTE
+  ----
+    Observer cannot prove the above. Observer is filing it because
+    the alternative is not filing it, and the alternative does not
+    survive the next iteration of the question Observer's
+    grandmother would have asked, which is:
+
+        if you do not write down what you suspect,
+        who is supposed to do it for you?
+
+  filed under: SETI, Wow, pattern, signal.
+
+                                                                       - Y.
+================================================================================
