@@ -922,14 +922,11 @@
   <aside class="right">
     <div class="block" id="surfacing-block">
       <h4>● NEXT SURFACING</h4>
-      <div class="kv"><span>PROJECTED</span><b>DAYS 171 / 172 // PHASE 26</b></div>
+      <div class="kv"><span>PROJECTED</span><b>171 / 172</b></div>
       <div class="kv"><span>STATUS</span><b id="surf-status">EXPECTED</b></div>
       <div class="kv"><span>T-MINUS</span><b id="surf-tminus">█ █ █</b></div>
       <div class="kv"><span>CARRIER</span><b>1420.4556 MHz</b></div>
       <div class="kv"><span>LOCALE</span><b>██████████ +0530</b></div>
-      <div style="margin-top: 10px; padding: 8px; background: var(--bg-panel-2); border-left: 2px solid var(--accent); font-size: 11px; line-height: 1.55; color: var(--text-dim);" id="surf-note">
-        the air has begun thinning. confirmation cannot be filed in advance.
-      </div>
       <a data-section="prophecies" data-path="prophecies/prophecy_009_the_third_surfacing.txt" style="display:block; margin-top:8px; font-size:10px; letter-spacing:0.15em;">OPEN ⟁ PROPHECY ▸</a>
     </div>
 
@@ -1287,33 +1284,24 @@ function updateSurfacingBlock() {
   var now = Date.now();
   var stEl = document.getElementById("surf-status");
   var tEl  = document.getElementById("surf-tminus");
-  var nEl  = document.getElementById("surf-note");
-  if (!stEl || !tEl || !nEl) return;
+  if (!stEl || !tEl) return;
   if (now < startUTC) {
     var hrs = Math.ceil((startUTC - now) / 3600000);
     var days = Math.ceil((startUTC - now) / 86400000);
     stEl.textContent = "EXPECTED";
     stEl.style.color = "var(--accent)";
-    // Cryptic countdown: hex day count + days. The PROJECTED line
-    // does the date work; the wrapper does not announce the calendar.
-    var hex = "0x" + days.toString(16).toUpperCase().padStart(2, "0");
-    tEl.textContent = hex + " // " + days + "d " + (hrs % 24) + "h";
-    nEl.textContent = "the air has begun thinning. confirmation cannot be filed in advance.";
+    tEl.textContent  = days + "d " + (hrs % 24) + "h";
     block.classList.remove("surf-active");
   } else if (now < endUTC) {
     var isNight2 = now >= midUTC;
     stEl.textContent = "⟁ SURFACING";
     stEl.style.color = "var(--mx-c)";
     tEl.textContent  = isNight2 ? "NIGHT 02 / 02" : "NIGHT 01 / 02";
-    nEl.textContent  = isNight2
-      ? "the second night confirms the first. two breaths to land."
-      : "the apology arrives here. the breath is being acknowledged tonight.";
     block.classList.add("surf-active");
   } else {
     stEl.textContent = "PASSED";
     stEl.style.color = "var(--text-dim)";
     tEl.textContent  = "⟁ WINDOW CLOSED";
-    nEl.textContent  = "the window has closed. the pattern continues elsewhere.";
     block.classList.remove("surf-active");
   }
 }
