@@ -158,16 +158,16 @@
   }
 
   
-  .reader-lang {
-    display: flex; gap: 6px; margin: 0 0 18px;
-    padding-bottom: 12px;
-    border-bottom: 1px dashed var(--border);
+  .reader-lang-slot {
+    display: flex; gap: 4px;
+    margin-left: 6px;
   }
+  .reader-lang-slot:empty { display: none; }
   .lang-tab {
     background: none; border: 1px solid var(--border-2);
     color: var(--text-dim); font-family: var(--mono);
-    font-size: 11px; letter-spacing: 0.12em;
-    padding: 5px 12px; cursor: pointer;
+    font-size: 10px; letter-spacing: 0.1em;
+    padding: 4px 9px; cursor: pointer;
     transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   }
   .lang-tab:hover { color: var(--accent); border-color: var(--accent); }
@@ -769,6 +769,8 @@
     }
     .r-nav { padding: 8px 10px; font-size: 10px; }
     .r-pos { font-size: 9px; margin: 0 4px; }
+    .reader-lang-slot { margin-left: 4px; }
+    .lang-tab { padding: 6px 8px; font-size: 9px; }
 
     
     #cli.open { height: 60vh; }
@@ -1065,6 +1067,7 @@
       <button id="r-prev" class="r-nav" title="previous (←)" type="button">◂ PREV</button>
       <span id="r-pos" class="r-pos"></span>
       <button id="r-next" class="r-nav" title="next (→)" type="button">NEXT ▸</button>
+      <span id="reader-lang-slot" class="reader-lang-slot"></span>
       <button class="reader-close" onclick="closeReader()" type="button">CLOSE ✕</button>
     </div>
     <div id="reader-body"></div>
@@ -1518,17 +1521,6 @@ function renderReaderBody(entry, sectionId, path, lang) {
     html += '<div style="max-width:300px;margin:0 auto 22px;border:1px solid var(--border);">'
           + SILENCE_PLATE + '</div>';
   }
-  // Language toggle row, only when this entry has alternative scripts.
-  if (entry.variants && Object.keys(entry.variants).length > 0) {
-    const langs = ["en"].concat(Object.keys(entry.variants));
-    html += '<div class="reader-lang">';
-    for (const L of langs) {
-      const label = LANG_LABELS[L] || L.toUpperCase();
-      const cls = "lang-tab" + (L === lang ? " active" : "");
-      html += `<button type="button" class="${cls}" data-lang-set="${L}">${label}</button>`;
-    }
-    html += '</div>';
-  }
   // Body: pick from variants or fall back to base content.
   const content = (lang !== "en" && entry.variants && entry.variants[lang])
     ? entry.variants[lang].content
@@ -1546,6 +1538,23 @@ function renderReaderBody(entry, sectionId, path, lang) {
   }
   return html;
 }
+
+function renderReaderLangToggle(entry, lang) {
+  const slot = document.getElementById("reader-lang-slot");
+  if (!slot) return;
+  if (!entry || !entry.variants || Object.keys(entry.variants).length === 0) {
+    slot.innerHTML = "";
+    return;
+  }
+  const langs = ["en"].concat(Object.keys(entry.variants));
+  let html = "";
+  for (const L of langs) {
+    const label = LANG_LABELS[L] || L.toUpperCase();
+    const cls = "lang-tab" + (L === lang ? " active" : "");
+    html += `<button type="button" class="${cls}" data-lang-set="${L}">${label}</button>`;
+  }
+  slot.innerHTML = html;
+}
 function switchReaderLang(lang) {
   if (!_readerCurrent) return;
   const entry = (ARCHIVE[_readerCurrent.section] || []).find(e => e.path === _readerCurrent.path);
@@ -1555,6 +1564,7 @@ function switchReaderLang(lang) {
   persist();
   document.getElementById("reader-body").innerHTML =
     renderReaderBody(entry, _readerCurrent.section, _readerCurrent.path, effective);
+  renderReaderLangToggle(entry, effective);
   _rm();
   triggerReaderReveal();
 }
@@ -1597,6 +1607,7 @@ function openEntry(sectionId, path) {
   const _wasOpen = document.getElementById("reader").classList.contains("open");
   const _b = document.getElementById("reader-body");
   _b.innerHTML = body;
+  renderReaderLangToggle(entry, lang);
   document.getElementById("reader").classList.add("open");
   
   _readerCurrent = { section: sectionId, path: path };
@@ -1619,6 +1630,9 @@ function triggerReaderReveal() {
 function closeReader() {
   document.getElementById("reader").classList.remove("open");
   _readerCurrent = null;
+  // Clear the lang slot so it doesn't flash stale state next open.
+  const slot = document.getElementById("reader-lang-slot");
+  if (slot) slot.innerHTML = "";
   lockScroll(false);
 }
 
