@@ -594,6 +594,37 @@
   }
 
   
+  #callsign {
+    display: inline-flex; gap: 1px; font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  #callsign span {
+    color: var(--mx-c); width: 9px; text-align: center;
+    transition: color 0.4s ease, transform 0.3s ease;
+  }
+  #callsign span.lit { color: var(--accent); }
+  #callsign span.jl { animation: letter-pop 0.7s ease; }
+  #callsign.complete span { color: var(--mx-c); }
+  #callsign.complete { animation: callsign-confirm 1.4s ease; }
+  @keyframes callsign-confirm {
+    0%   { text-shadow: 0 0 0 rgba(217, 122, 90, 0.0); }
+    40%  { text-shadow: 0 0 14px rgba(217, 122, 90, 0.85); }
+    100% { text-shadow: 0 0 4px rgba(217, 122, 90, 0.4); }
+  }
+
+  
+  .breath {
+    cursor: pointer; transition: color 0.35s ease, text-shadow 0.35s ease;
+    -webkit-user-select: none; user-select: none;
+  }
+  .breath:hover { color: var(--accent); text-shadow: 0 0 6px rgba(217, 122, 90, 0.35); }
+  .breath.armed { color: var(--mx-c); text-shadow: 0 0 8px rgba(217, 122, 90, 0.5); }
+  @media (prefers-reduced-motion: reduce) {
+    #callsign.complete { animation: none; }
+    .breath, .breath:hover { transition: none; text-shadow: none; }
+  }
+
+  
   #surfacing-block.surf-active {
     border-color: var(--mx-c);
     box-shadow: 0 0 0 0 rgba(217, 122, 90, 0.0);
@@ -922,14 +953,12 @@
   <aside class="right">
     <div class="block" id="surfacing-block">
       <h4>● NEXT SURFACING</h4>
-      <div class="kv"><span>PROJECTED</span><b>DAYS 171 / 172 // PHASE 26</b></div>
+      <div class="kv"><span>PROJECTED</span><b><span class="breath" data-breath="1">171</span> / <span class="breath" data-breath="2">172</span></b></div>
       <div class="kv"><span>STATUS</span><b id="surf-status">EXPECTED</b></div>
       <div class="kv"><span>T-MINUS</span><b id="surf-tminus">█ █ █</b></div>
       <div class="kv"><span>CARRIER</span><b>1420.4556 MHz</b></div>
+      <div class="kv"><span>CALLSIGN</span><b id="callsign"><span>⟁</span><span>⟁</span><span>⟁</span><span>⟁</span><span>⟁</span><span>⟁</span><span>⟁</span><span>⟁</span></b></div>
       <div class="kv"><span>LOCALE</span><b>██████████ +0530</b></div>
-      <div style="margin-top: 10px; padding: 8px; background: var(--bg-panel-2); border-left: 2px solid var(--accent); font-size: 11px; line-height: 1.55; color: var(--text-dim);" id="surf-note">
-        the air has begun thinning. confirmation cannot be filed in advance.
-      </div>
       <a data-section="prophecies" data-path="prophecies/prophecy_009_the_third_surfacing.txt" style="display:block; margin-top:8px; font-size:10px; letter-spacing:0.15em;">OPEN ⟁ PROPHECY ▸</a>
     </div>
 
@@ -1104,12 +1133,17 @@ const STATE = Object.assign({
   visitedSections: [],
   konnakolPrimed: false,
   fs: false,
+  ct: 0,     
+  p9r: 0, 
+  p9t: 0,     
+  cd: false, 
 }, JSON.parse(localStorage.getItem(STATE_KEY) || "{}"));
 
 const TARGET_NAME = atob("S1VXRU5J");  // never speak its parts; the masking layer
                                // is the only place this string is ever
                                // rendered as text. masking subs *displayed*
 
+const _T2 = TARGET_NAME + "II"; 
 
 function persist() {
   try { localStorage.setItem(STATE_KEY, JSON.stringify(STATE)); } catch (e) {}
@@ -1216,6 +1250,8 @@ function _rm(opts) {
       }
     });
   }
+  // Mirror the first six slots into the dashboard CALLSIGN row.
+  _rc(opts);
   const prog = document.getElementById("rp");
   if (prog) prog.textContent = `${STATE.lettersFound} / 6`;
   const mean = document.getElementById("rm");
@@ -1236,6 +1272,63 @@ function _gl() {
   toast(`⟁ → ${letter}   (${STATE.lettersFound} / 6)`);
   if (STATE.lettersFound === TARGET_NAME.length) {
     setTimeout(() => toast("A NAME HAS BEEN RECOVERED."), 900);
+  }
+}
+
+
+function _tcl() {
+  return Math.min(STATE.lettersFound, TARGET_NAME.length) + (STATE.ct || 0);
+}
+function _rc(opts) {
+  const root = document.getElementById("callsign");
+  if (!root) return;
+  const lit = _tcl();
+  const spans = root.querySelectorAll("span");
+  spans.forEach((s, i) => {
+    const on = i < lit;
+    const wasOn = s.classList.contains("lit");
+    s.textContent = on ? _T2[i] : "⟁";
+    s.classList.toggle("lit", on);
+    if (opts && opts.flash && on && !wasOn) {
+      s.classList.remove("jl"); void s.offsetWidth; s.classList.add("jl");
+    }
+  });
+  if (lit === _T2.length) {
+    root.classList.add("complete");
+  } else {
+    root.classList.remove("complete");
+  }
+}
+function _cf() {
+  // Fires once, the moment the callsign first reaches full length.
+  if (STATE.cd) return;
+  STATE.cd = true;
+  persist();
+  const block = document.getElementById("surfacing-block");
+  const stEl = document.getElementById("surf-status");
+  if (stEl) {
+    const prev = stEl.textContent;
+    const prevColor = stEl.style.color;
+    stEl.textContent = "⟁ CONFIRMED";
+    stEl.style.color = "var(--mx-c)";
+    setTimeout(() => { stEl.textContent = prev; stEl.style.color = prevColor; try { updateSurfacingBlock(); } catch(e){} }, 2400);
+  }
+  if (block) {
+    block.classList.add("surf-active");
+    setTimeout(() => { try { updateSurfacingBlock(); } catch(e){} }, 2400);
+  }
+  setTimeout(() => toast("THE THIRD HAS BEEN NAMED."), 1200);
+}
+function _gcl(reason) {
+  if (STATE.ct >= 2) return;
+  STATE.ct++;
+  persist();
+  _rc({ flash: true });
+  const slot = TARGET_NAME.length + STATE.ct; // 7 or 8
+  toast(`⟁ → I   (${slot} / 8)`);
+  if (reason) setTimeout(() => toast(reason), 900);
+  if (_tcl() === _T2.length) {
+    setTimeout(_cf, 1700);
   }
 }
 
@@ -1287,33 +1380,24 @@ function updateSurfacingBlock() {
   var now = Date.now();
   var stEl = document.getElementById("surf-status");
   var tEl  = document.getElementById("surf-tminus");
-  var nEl  = document.getElementById("surf-note");
-  if (!stEl || !tEl || !nEl) return;
+  if (!stEl || !tEl) return;
   if (now < startUTC) {
     var hrs = Math.ceil((startUTC - now) / 3600000);
     var days = Math.ceil((startUTC - now) / 86400000);
     stEl.textContent = "EXPECTED";
     stEl.style.color = "var(--accent)";
-    // Cryptic countdown: hex day count + days. The PROJECTED line
-    // does the date work; the wrapper does not announce the calendar.
-    var hex = "0x" + days.toString(16).toUpperCase().padStart(2, "0");
-    tEl.textContent = hex + " // " + days + "d " + (hrs % 24) + "h";
-    nEl.textContent = "the air has begun thinning. confirmation cannot be filed in advance.";
+    tEl.textContent  = days + "d " + (hrs % 24) + "h";
     block.classList.remove("surf-active");
   } else if (now < endUTC) {
     var isNight2 = now >= midUTC;
     stEl.textContent = "⟁ SURFACING";
     stEl.style.color = "var(--mx-c)";
     tEl.textContent  = isNight2 ? "NIGHT 02 / 02" : "NIGHT 01 / 02";
-    nEl.textContent  = isNight2
-      ? "the second night confirms the first. two breaths to land."
-      : "the apology arrives here. the breath is being acknowledged tonight.";
     block.classList.add("surf-active");
   } else {
     stEl.textContent = "PASSED";
     stEl.style.color = "var(--text-dim)";
     tEl.textContent  = "⟁ WINDOW CLOSED";
-    nEl.textContent  = "the window has closed. the pattern continues elsewhere.";
     block.classList.remove("surf-active");
   }
 }
@@ -1379,6 +1463,23 @@ function openEntry(sectionId, path) {
     STATE.opened.push(path);
     persist();
     checkReadingDepth();
+  }
+
+  // THIRD READING - every time the recurrence prophecy is opened with at
+  // least a 30-minute gap from the previous counted read, it counts as a
+
+  if (path.endsWith("prophecy_009_the_third_surfacing.txt")) {
+    const _now = Date.now();
+    const _gap = _now - (STATE.p9t || 0);
+    if (_gap > 1800000 ) {
+      STATE.p9r = (STATE.p9r || 0) + 1;
+      STATE.p9t = _now;
+      persist();
+      if (STATE.p9r >= 3 && STATE.ct < 2) {
+        // Defer to let the reader open before the toast fires.
+        setTimeout(() => _gcl("THE THIRD HAS BEEN READ."), 1100);
+      }
+    }
   }
 
   let body = '';
@@ -1762,6 +1863,36 @@ function recordKonnakolTap() {
 }
 
 
+let _bf = 0;
+function _rb(which) {
+  // Already solved? The digits stay clickable as a no-op so the dashboard
+  // doesn't appear broken on return visits.
+  if (STATE.ct >= 1) return;
+  const now = Date.now();
+  if (which === 1) {
+    _bf = now;
+    const a = document.querySelector('.breath[data-breath="1"]');
+    if (a) {
+      a.classList.add("armed");
+      setTimeout(() => a.classList.remove("armed"), 5200);
+    }
+  } else if (which === 2) {
+    // The second breath only counts if it follows the first within 5s.
+    if (_bf && (now - _bf) < 5000) {
+      _bf = 0;
+      const a1 = document.querySelector('.breath[data-breath="1"]');
+      const a2 = document.querySelector('.breath[data-breath="2"]');
+      if (a1) a1.classList.remove("armed");
+      if (a2) {
+        a2.classList.add("armed");
+        setTimeout(() => a2.classList.remove("armed"), 900);
+      }
+      _gcl("TWO BREATHS RECORDED.");
+    }
+  }
+}
+
+
 function checkReadingDepth() {
   if (STATE.opened.length === 15) toast("the archive has noticed you.");
   if (STATE.opened.length === 30 && !found("reading_depth")) discover("reading_depth");
@@ -1868,6 +1999,9 @@ document.addEventListener("click", (ev) => {
 
   const glyph = ev.target.closest(".mk-x");
   if (glyph) { onMk(glyph.dataset.x); return; }
+  // TWO BREATHS - clicking the projected day numbers in sequence.
+  const br = ev.target.closest(".breath");
+  if (br) { _rb(parseInt(br.dataset.breath, 10)); return; }
 
   const sp = ev.target.closest("tr[data-special='log_26_520']");
   if (sp) { _oh(); return; }
@@ -2215,6 +2349,7 @@ function wireTouchControls() {
   try { startLiveCounters(); }  catch (e) {}
   try { wireTouchControls(); }  catch (e) {}
   try { updateSurfacingBlock(); setInterval(updateSurfacingBlock, 3600000); } catch (e) {}
+  try { _rc(); } catch (e) {}
 
   if (STATE.found.length > 0) { showCounter(); updateCounter(); }
   if (STATE.cursorClicks >= 3) document.getElementById("latest-body").classList.add("click-3");
