@@ -769,8 +769,23 @@
     }
     .r-nav { padding: 8px 10px; font-size: 10px; }
     .r-pos { font-size: 9px; margin: 0 4px; }
-    .reader-lang-slot { margin-left: 4px; }
-    .lang-tab { padding: 6px 8px; font-size: 9px; }
+
+    
+    .reader-lang-slot {
+      flex: 1 0 100%;
+      margin: 6px -14px 0;
+      padding: 8px 14px 4px;
+      border-top: 1px dashed var(--border);
+      gap: 6px;
+    }
+    .reader-lang-slot:empty { display: none; }
+    .lang-tab {
+      flex: 1;
+      padding: 9px 6px;
+      font-size: 11px;
+      min-height: 36px;
+      letter-spacing: 0.08em;
+    }
 
     
     #cli.open { height: 60vh; }
