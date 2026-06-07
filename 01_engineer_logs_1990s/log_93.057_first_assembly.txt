@@ -2,7 +2,7 @@
   LOG 93.057
   21 SEP 1993 - 02:14 +0530
   MORATUWA / DEPT. ELECTRONIC
-  STATUS: DECRYPTED
+  STATUS: RECONSTRUCTED FROM MEMORY (original lost 1996)
 ================================================================================
 
   receiver assembled.
