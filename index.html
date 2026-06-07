@@ -113,15 +113,49 @@
   .right .block .kv { font-size: 11px; color: var(--text-dim); display: flex; justify-content: space-between; padding: 2px 0; }
   .right .block .kv b { color: var(--text); font-weight: 500; }
   .right .ascii-map { font-size: 8px; color: var(--accent-2); line-height: 1.1; white-space: pre; }
-  .right .remember { font-size: 11px; color: var(--text-dim); line-height: 1.6; }
-  .right .remember .author { display: block; color: var(--accent); margin-top: 6px; }
-
+  
   .bottom {
     border-top: 1px solid var(--border); background: var(--bg-panel);
     padding: 10px 18px; font-size: 11px; color: var(--text-dim);
     display: flex; gap: 28px; flex-wrap: wrap;
   }
   .bottom .right-msg { margin-left: auto; color: var(--warn); }
+  .bottom .archive-mark {
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .bottom .archive-mark:hover { color: var(--accent); }
+  @media (min-width: 720px) {
+    .bottom {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    }
+    body { padding-bottom: 44px; }
+  }
+
+  
+  #archive-popup {
+    position: fixed; inset: 0; background: rgba(5, 3, 10, 0.78);
+    display: none; align-items: center; justify-content: center;
+    z-index: 220; padding: 24px;
+  }
+  #archive-popup.open { display: flex; }
+  .archive-popup-inner {
+    position: relative;
+    background: var(--bg-panel); border: 1px solid var(--border-2);
+    max-width: 440px; padding: 28px 32px;
+    font-size: 13px; color: var(--text-dim); line-height: 1.85;
+    animation: fade-in 0.35s ease;
+  }
+  .archive-popup-inner .close {
+    position: absolute; top: 8px; right: 10px;
+    background: none; border: none; color: var(--text-vdim);
+    font-size: 14px; cursor: pointer; padding: 4px 8px;
+  }
+  .archive-popup-inner .close:hover { color: var(--accent); }
+  .archive-popup-quote .author {
+    display: block; color: var(--accent);
+    margin-top: 12px; font-size: 12px; letter-spacing: 0.08em;
+  }
 
   
   .reader {
@@ -700,13 +734,15 @@
 
   
   #cli-trigger {
-    position: fixed; left: 18px; bottom: 12px;
+    position: fixed; left: 14px; bottom: 50px; 
     width: 22px; height: 22px; line-height: 20px; text-align: center;
     border: 1px solid var(--border-2); color: var(--text-vdim);
     background: var(--bg-panel); cursor: pointer; z-index: 80;
-    font-size: 12px; display: none;
+    font-size: 11px; display: block;
+    opacity: 0.55; transition: opacity 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
-  #cli-trigger:active, #cli-trigger:hover { color: var(--accent); border-color: var(--accent); }
+  #cli-trigger:hover { opacity: 1; color: var(--accent); border-color: var(--accent); }
+  #cli-trigger:active { opacity: 1; }
 
   
 
@@ -1055,19 +1091,11 @@
       <div id="rm">─ - - - - - ─</div>
     </div>
 
-    <div class="block">
-      <h4>● REMEMBER</h4>
-      <div class="remember">
-        History is not written by the victors.<br />
-        It is written by those who survive long enough to upload their truth.
-        <span class="author">- Y.</span>
-      </div>
-    </div>
   </aside>
 </div>
 
 <div class="bottom">
-  <span>△ THE ARCHIVE v2.6.0</span>
+  <span class="archive-mark" id="archive-mark" title="about this archive">△ THE ARCHIVE v2.6.0</span>
   <span>DISTRIBUTED NODES: <b style="color: var(--text);" id="stat-nodes">12,556</b></span>
   <span>REDUNDANCY: <b style="color: var(--accent-2);">ACTIVE</b></span>
   <span>INTEGRITY: <b style="color: var(--accent-2);" id="stat-integrity">99.992%</b></span>
@@ -1097,6 +1125,18 @@
 
 
 <div id="cli-trigger" title="terminal">▸_</div>
+
+
+<div id="archive-popup">
+  <div class="archive-popup-inner">
+    <button class="close" type="button" onclick="document.getElementById('archive-popup').classList.remove('open')" aria-label="close">✕</button>
+    <div class="archive-popup-quote">
+      History is not written by the victors.<br />
+      It is written by those who survive long enough to upload their truth.
+      <span class="author">- Y.</span>
+    </div>
+  </div>
+</div>
 
 
 <div id="hint-btn" title="hint">?</div>
@@ -2429,6 +2469,17 @@ function wireTouchControls() {
     trig.addEventListener("click", () => {
       const cli = document.getElementById("cli");
       if (cli.classList.contains("open")) cliClose(); else cliOpen();
+    });
+  }
+  // Archive mark in the footer → popup with the surviving-truth quote.
+  const mark = document.getElementById("archive-mark");
+  const popup = document.getElementById("archive-popup");
+  if (mark && popup) {
+    mark.addEventListener("click", () => popup.classList.add("open"));
+    // Click on the dimmed backdrop closes the popup; click inside
+    // the inner card does not propagate.
+    popup.addEventListener("click", (ev) => {
+      if (ev.target === popup) popup.classList.remove("open");
     });
   }
   // Tapping the konnakol indicator counts as a rhythm tap (touch parity
