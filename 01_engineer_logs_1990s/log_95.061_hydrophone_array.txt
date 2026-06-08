@@ -2,7 +2,7 @@
   LOG 95.061
   09 FEB 1995 - 03:22 +0530
   COASTAL FACILITY 02
-  STATUS: DECRYPTED
+  STATUS: RECONSTRUCTED FROM NOTEBOOKS (originals lost 1996)
 ================================================================================
 
   hydrophone array calibration, 6-channel.

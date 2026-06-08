@@ -2,7 +2,7 @@
   LOG 95.187
   06 JUL 1995 - 23:58 +0530
   COASTAL FACILITY 02
-  STATUS: DECRYPTED
+  STATUS: RECONSTRUCTED FROM NOTEBOOKS (originals lost 1996)
 ================================================================================
 
   burst transmitter operational.

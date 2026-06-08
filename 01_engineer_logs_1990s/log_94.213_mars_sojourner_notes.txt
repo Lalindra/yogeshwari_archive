@@ -2,7 +2,7 @@
   LOG 94.213
   19 JUL 1994 - 22:10 +0530
   MORATUWA / DORM 4
-  STATUS: DECRYPTED
+  STATUS: RECONSTRUCTED FROM NOTEBOOKS (originals lost 1996)
 ================================================================================
 
   read about NASA. Pathfinder. they plan to land a small machine on Mars.

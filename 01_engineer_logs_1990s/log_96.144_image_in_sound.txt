@@ -2,7 +2,7 @@
   LOG 96.144
   23 MAY 1996 - 02:00 +0530
   TRAINING GROUND  /  POSITION 7
-  STATUS: DECRYPTED
+  STATUS: RECONSTRUCTED FROM NOTEBOOKS (originals lost 1996)
 ================================================================================
 
   experiment: encode a still image inside a sound.

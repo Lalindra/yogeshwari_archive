@@ -2,7 +2,7 @@
   LOG 94.112
   03 MAR 1994 - 16:47 +0530
   MORATUWA / LIBRARY ANNEX
-  STATUS: DECRYPTED
+  STATUS: RECONSTRUCTED FROM NOTEBOOKS (originals lost 1996)
 ================================================================================
 
   most students treat the oscilloscope as a tool.

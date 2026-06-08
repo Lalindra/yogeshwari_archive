@@ -2,7 +2,7 @@
   LOG 96.029
   29 JAN 1996 - 04:11 +0530
   TRAINING GROUND  /  POSITION 7
-  STATUS: DECRYPTED
+  STATUS: RECONSTRUCTED FROM MEMORY (original lost 1996)
 ================================================================================
 
   built oscilloscope from television tube. failed first attempt - broke
