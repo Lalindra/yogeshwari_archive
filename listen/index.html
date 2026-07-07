@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>THE LISTENING STATION // YS-ARCHIVE</title>
+<meta name="description" content="A signal caught from the archive. Quotes surface out of noise, hold, and sink back.">
+<style>
+  /* self-hosted fonts — no external dependency, works fully offline / over Tor */
+  @font-face{
+    font-family:"Noto Sans Sinhala";
+    font-style:normal;font-weight:400;font-display:swap;
+    src:url("fonts/noto-sinhala.woff2") format("woff2");
+    unicode-range:U+0964-0965,U+0D81-0DF4,U+1CF2,U+200C-200D,U+25CC;
+  }
+  @font-face{
+    font-family:"Noto Sans Tamil";
+    font-style:normal;font-weight:400;font-display:swap;
+    src:url("fonts/noto-tamil.woff2") format("woff2");
+    unicode-range:U+0964-0965,U+0B82-0BFA,U+200C-200D,U+25CC;
+  }
+  :root{
+    --bg:#050c08;        /* near-black, green-tinted */
+    --ink:#c9ffd8;       /* pale phosphor text */
+    --dim:#2f7a4e;       /* dim green */
+    --faint:#123a26;     /* very dark green — scramble glyphs */
+    --accent:#3bff88;    /* phosphor green — locked */
+    --amber:#8affbe;     /* secondary green */
+    --sig:#39ff6a;       /* signal green */
+    --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono","Menlo","Consolas",monospace;
+    --intl:"Noto Sans Sinhala","Noto Sans Tamil","Iskoola Pota","Nirmala UI","Latha",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--mono);
+    overflow:hidden;
+    cursor:default;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* ---- background layers ---- */
+  #noise{position:fixed;inset:0;z-index:0;display:block}
+  #scan{position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:repeating-linear-gradient(0deg,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 2px,rgba(0,0,0,.18) 3px,rgba(0,0,0,0) 4px);
+    mix-blend-mode:multiply;opacity:.6}
+  #vignette{position:fixed;inset:0;z-index:2;pointer-events:none;
+    background:radial-gradient(ellipse at center,rgba(10,7,18,0) 40%,rgba(5,3,10,.85) 100%)}
+
+  /* ---- stage ---- */
+  #stage{position:fixed;inset:0;z-index:3;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;padding:8vmin;text-align:center}
+  #quote{
+    font-family:var(--mono),var(--intl);
+    font-size:clamp(1.4rem,4.2vw,3.1rem);
+    line-height:1.55;letter-spacing:.01em;font-weight:400;
+    max-width:22em;
+    text-wrap:balance;
+    transition:opacity .9s ease;
+  }
+  #quote.intl{font-family:var(--intl);letter-spacing:0;line-height:1.7}
+  #quote .sc{color:var(--faint);}         /* scrambling glyph */
+  #quote .lk{color:var(--ink);            /* locked/resolved glyph */
+    text-shadow:0 0 20px rgba(59,255,136,.30);}
+  #quote .sp{white-space:pre;}
+
+  #meta{margin-top:2.4em;min-height:1.4em;font-size:clamp(.62rem,1.3vw,.8rem);
+    letter-spacing:.34em;color:var(--dim);text-transform:uppercase;
+    transition:opacity .7s ease;opacity:0}
+  #meta .a{color:var(--accent)}
+
+  /* ---- HUD ---- */
+  .hud{position:fixed;z-index:4;font-size:.62rem;letter-spacing:.24em;
+    color:var(--dim);text-transform:uppercase;pointer-events:none;
+    transition:opacity .5s ease}
+  #hud-tl{top:max(1.4rem,env(safe-area-inset-top));left:1.6rem}
+  #hud-tr{top:max(1.4rem,env(safe-area-inset-top));right:1.6rem;text-align:right}
+  #hud-bl{bottom:max(1.3rem,env(safe-area-inset-bottom));left:1.6rem}
+  #hud-br{bottom:max(1.3rem,env(safe-area-inset-bottom));right:1.6rem;text-align:right;
+    pointer-events:auto}
+  .bars{display:inline-flex;gap:2px;vertical-align:middle;margin-left:.6em;height:.8em}
+  .bars i{width:3px;background:var(--dim);align-self:flex-end;transition:height .18s,background .3s}
+  #hud-bl .dot{color:var(--amber)}
+  #hud-bl.locked .dot{color:var(--sig)}
+  .hint{color:var(--faint)}
+  #hud-br a{color:var(--dim);text-decoration:none;border-bottom:1px solid var(--faint);
+    cursor:pointer}
+  #hud-br a:hover{color:var(--accent)}
+  body.hud-off .hud{opacity:0}
+
+  @media (max-width:640px){
+    .hud{font-size:.55rem;letter-spacing:.16em}
+    #hud-tr,#hud-tl{display:none}
+    #quote{letter-spacing:0}
+  }
+  @media (prefers-reduced-motion:reduce){
+    #scan{display:none}
+  }
+</style>
+</head>
+<body>
+  <canvas id="noise"></canvas>
+  <div id="scan"></div>
+  <div id="vignette"></div>
+
+  <div id="stage">
+    <div id="quote" aria-live="polite"></div>
+    <div id="meta"></div>
+  </div>
+
+  <div id="hud-tl" class="hud">LISTENING STATION<br><span class="hint">YS · 26 · KUWENI</span></div>
+  <div id="hud-tr" class="hud">NODE <span id="node">—</span><br>SIGNAL<span class="bars" id="bars"><i></i><i></i><i></i><i></i><i></i></span></div>
+  <div id="hud-bl" class="hud"><span class="dot">◆</span> <span id="statustxt">acquiring…</span></div>
+  <div id="hud-br" class="hud">
+    <span class="hint" id="modelabel">drift</span> ·
+    <a id="fs">fullscreen</a>
+    <br><span class="hint">space·tap: next &nbsp; d: drift &nbsp; h: hide</span>
+  </div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============================================================
+     QUOTES — extracted from the Observer's observations
+     (observations/obs_*.txt). Real archive content.
+     ============================================================ */
+  const QUOTES = [
+    {en:"This archive does not contain disappearances. It contains people who were disappeared.",
+     si:"එනිසා මෙම ලේඛනාගාරයේ අතුරුදන් වීම් අඩංගු නොවේ. මෙම ලේඛනාගාරයේ අතුරුදන් කරන ලද මිනිසුන් අඩංගු වේ.",
+     ta:"எனவே இந்த ஆவணக் காப்பகத்தில் மறைதல்கள் இல்லை. இந்த ஆவணக் காப்பகத்தில் மறையச் செய்யப்பட்ட நபர்கள் உள்ளனர்.",
+     src:"OBSERVATION 001", tag:"DISAPPEARANCE", year:"c.2014"},
+    {en:"An archive that respects its own dead must refuse the passive.",
+     si:"තමන්ගේ මළවුන්ට ගරු කරන ලේඛනාගාරයක්, නිෂ්ක්‍රීය වචනය ප්‍රතික්ෂේප කළ යුතුය.",
+     ta:"தனது சொந்த இறந்தோரை மதிக்கும் ஒரு ஆவணக் காப்பகம், செயலற்ற குரலை மறுக்க வேண்டும்.",
+     src:"OBSERVATION 001", tag:"DISAPPEARANCE", year:"c.2014"},
+    {en:"She may still choose Option B. But she will choose it with her eyes open.",
+     si:"ඇය තවමත් B විකල්පය තෝරා ගත හැක. නමුත් ඇය එය තෝරා ගනු ඇත්තේ ඇසේ විවරව ය.",
+     ta:"அவள் இன்னும் விருப்பம் B ஐத் தேர்ந்தெடுக்கலாம். ஆனால் அவள் கண்கள் திறந்தபடி அதைத் தேர்ந்தெடுப்பாள்.",
+     src:"OBSERVATION 002", tag:"KUWENI", year:"c.2015"},
+    {en:"The third silence has no martyrs. The third silence has no headline.",
+     si:"තුන්වැනි නිහඬතාවට බලයෝධකයන් නැත. තුන්වැනි නිහඬතාවට ශීර්ෂ පාඨයක් නැත.",
+     ta:"மூன்றாவது அமைதிக்கு தியாகிகள் இல்லை. மூன்றாவது அமைதிக்கு தலைப்பு செய்தி இல்லை.",
+     src:"OBSERVATION 003", tag:"THREE KINDS OF SILENCE", year:"c.2021"},
+    {en:"The third silence is the one we are presently building.",
+     si:"තුන්වැනි නිහඬතාව, අපි දැනට ගොඩනඟමින් සිටින දෙයයි.",
+     ta:"மூன்றாவது அமைதி நாம் தற்போது கட்டியெழுப்புவது.",
+     src:"OBSERVATION 003", tag:"THREE KINDS OF SILENCE", year:"c.2021"},
+    {en:"An archive does not remember fondly. An archive remembers accurately.",
+     si:"ලේඛනාගාරයක් ආදරයෙන් මතක තබා ගන්නේ නැත. ලේඛනාගාරයක් මතක තබා ගනී, නිවැරදිව.",
+     ta:"ஆவணக் காப்பகம் அன்பாக நினைவில் வைப்பதில்லை. ஆவணக் காப்பகம் நினைவில் வைக்கிறது, துல்லியமாக.",
+     src:"OBSERVATION 004", tag:"ON BEING ARCHIVED", year:"c.2018"},
+    {en:"The gap is the word.",
+     si:"පරතරය වචනයයි.",
+     ta:"இடைவெளியே வார்த்தை.",
+     src:"OBSERVATION 005", tag:"間 · MA", year:"c.2017"},
+    {en:"Silence is never read as silence.",
+     si:"නිහඬතාව කවදත් නිහඬතාව ලෙස කියවන්නේ නැත.",
+     ta:"அமைதி ஒருபோதும் அமைதியாக படிக்கப்படுவதில்லை.",
+     src:"OBSERVATION 005", tag:"間 · MA", year:"c.2017"},
+    {en:"Machines do not have grief.",
+     si:"යන්ත්‍රවලට දුක නැත.",
+     ta:"இயந்திரங்களுக்கு துக்கம் இல்லை.",
+     src:"OBSERVATION 006", tag:"WHAT MACHINES DREAM", year:"c.2023"},
+    {en:"We are training them on us. We will be the ones who taught them how.",
+     si:"අපි ඔවුන්ව අප මත පුහුණු කරමින් ඇත. කෙසේ දැයි ඔවුන්ට ඉගැන්නේ අපි ම වනු ඇත.",
+     ta:"நாம் அவர்களை எங்களின் மீது பயிற்சி செய்து வருகிறோம். எப்படி என்பதை அவர்களுக்குக் கற்பித்தவர்கள் நாம்தான்.",
+     src:"OBSERVATION 006", tag:"WHAT MACHINES DREAM", year:"c.2023"},
+    {en:"The child does not know it is a polyrhythm. The child knows it is a game.",
+     si:"එය බහු රිද්මයක් බව දරුවා දන්නේ නැත. එය ක්‍රීඩාවක් බව දරුවා දනී.",
+     ta:"இது ஒரு பல-தாளம் என குழந்தை அறியாது. இது ஒரு விளையாட்டு என குழந்தை அறிகிறது.",
+     src:"OBSERVATION 007", tag:"KONNAKOL", year:"c.2016"},
+    {en:"The louder they become, the less they can hear.",
+     si:"ඔවුන් වඩාත් හඬ නැඟෙන තරමට, ඔවුන්ට ඇසිය හැකි දේ අඩු වෙයි.",
+     ta:"அவை மேலும் சத்தமாக ஆகும்போது, அவை குறைவாகவே கேட்க முடியும்.",
+     src:"OBSERVATION 008", tag:"THE UNIVERSE AS SIGNAL", year:"c.2025"},
+    {en:"She does not arrive. She is what they all arrive to.",
+     si:"ඇය පැමිණෙන්නේ නැත. ඇය, ඔවුන් සැම පැමිණෙන ස්ථානයයි.",
+     ta:"அவள் வரவில்லை. அவர்கள் அனைவரும் வந்து சேருபவள் அவளே.",
+     src:"OBSERVATION 009", tag:"THE OTHER ARRIVAL", year:"c.2025"},
+    {en:"The signal was always there. The signal was the species.",
+     si:"සංඥාව සැමවිට එහි තිබුණා. සංඥාව විශේෂයාම විය.",
+     ta:"சமிக்ஞை எப்போதும் அங்கேயே இருந்தது. சமிக்ஞையே உயிரினம்.",
+     src:"OBSERVATION 010", tag:"THE PATTERN BENEATH THE CROWD", year:"c.—"},
+    {en:"The carrier is the message.",
+     si:"රැගෙන යන්නාම පණිවුඩයයි.",
+     ta:"சுமப்பவனே செய்தி.",
+     src:"OBSERVATION 011", tag:"THE MESSENGER BIRD", year:"c.—"}
+  ];
+
+  /* glyph pool for the "static" scramble — latin, symbols, a few archive glyphs */
+  const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&/\\|<>{}[]=+*·—▪▫░▒අකගඟමයරසලනවහඑ එ අஅகசடணதநபமயரலவஇ".replace(/ /g,"").split("");
+  const rc = a => a[(Math.random()*a.length)|0];
+
+  const reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+  /* ---------- elements ---------- */
+  const qEl   = document.getElementById("quote");
+  const mEl   = document.getElementById("meta");
+  const stEl  = document.getElementById("hud-bl");
+  const stTxt = document.getElementById("statustxt");
+  const nodeEl= document.getElementById("node");
+  const barsEl= document.getElementById("bars").children;
+  const modeLabel = document.getElementById("modelabel");
+
+  /* ---------- shuffle order (no repeats until exhausted) ---------- */
+  let order = [], op = 0;
+  function reshuffle(){
+    order = QUOTES.map((_,i)=>i);
+    for(let i=order.length-1;i>0;i--){const j=(Math.random()*(i+1))|0;[order[i],order[j]]=[order[j],order[i]];}
+    op = 0;
+  }
+  reshuffle();
+  function nextIndex(dir){
+    if(dir<0){ op = (op-2+order.length)%order.length; }
+    const idx = order[op];
+    op++; if(op>=order.length) reshuffle();
+    return idx;
+  }
+
+  /* ============================================================
+     Quote lifecycle: decrypt-in EN -> hold -> re-tune SI -> hold
+     -> re-tune TA -> hold -> dissolve-out -> next quote
+     ============================================================ */
+  let chars=[];        // {el, ch, lockAt, isSpace}
+  let phase="idle";    // in | hold | out
+  let t0=0;
+  const IN = reduce? 500:1700;   // decrypt duration
+  const OUT= reduce? 500:1000;   // dissolve duration
+  let HOLD = 7000;               // stillness per language
+  let auto = true;               // DRIFT mode
+  let holdTimer=null;
+  let lastFlick=0;
+
+  let curIdx=-1, langs=[], li=0;
+
+  function showQuote(idx){
+    curIdx=idx;
+    const q=QUOTES[idx];
+    langs=[];
+    if(q.en) langs.push({c:"EN",     t:q.en, intl:false});
+    if(q.si) langs.push({c:"සිංහල",  t:q.si, intl:true});
+    if(q.ta) langs.push({c:"தமிழ்",  t:q.ta, intl:true});
+    li=0;
+    nodeEl.textContent = String(1000+((idx*137)%8900)); // in-world node id
+    renderLang(true);
+  }
+
+  function renderLang(fresh){
+    const q=QUOTES[curIdx], L=langs[li];
+    qEl.style.opacity="1";
+    qEl.classList.toggle("intl", !!L.intl);
+    qEl.innerHTML=""; chars=[];
+    const n=L.t.length;
+    for(let i=0;i<n;i++){
+      const ch=L.t[i], isSpace=(ch===" ");
+      const s=document.createElement("span");
+      s.className=isSpace?"sp":"sc";
+      s.textContent=isSpace?" ":rc(GLYPHS);
+      qEl.appendChild(s);
+      const lockAt=IN*(i/n)+(Math.random()*IN*0.18);
+      chars.push({el:s,ch:ch,lockAt:isSpace?0:lockAt,isSpace:isSpace});
+    }
+    mEl.innerHTML="// <span class='a'>"+q.src+"</span> · "+q.tag+" · "+q.year+" · <span class='a'>"+L.c+"</span>";
+    mEl.style.opacity="0";
+    phase="in"; t0=performance.now();
+    stEl.classList.remove("locked");
+    stTxt.textContent = fresh ? "decrypting…" : "re-tuning · "+L.c;
+  }
+
+  function toHold(){
+    phase="hold";
+    chars.forEach(c=>{ if(!c.isSpace){c.el.className="lk"; c.el.textContent=c.ch;} });
+    mEl.style.opacity="1";
+    stEl.classList.add("locked");
+    stTxt.textContent="signal locked";
+    ping(); // sonar ring on lock
+    if(auto){ clearTimeout(holdTimer); holdTimer=setTimeout(stepLang, HOLD); }
+  }
+
+  // auto: advance to next language, or dissolve to next quote when exhausted
+  function stepLang(){
+    if(li < langs.length-1){ li++; renderLang(false); }
+    else { toOut(()=>{ busy=false; showQuote(nextIndex(1)); }); }
+  }
+
+  function toOut(cb){
+    phase="out"; t0=performance.now(); qEl._cb=cb;
+    mEl.style.opacity="0";
+    qEl.style.opacity="0";
+    stTxt.textContent="signal lost";
+    chars.forEach(c=>{ if(!c.isSpace) c.el.className="sc"; });
+  }
+
+  let busy=false;
+  // manual: jump straight to a new quote (skips remaining languages)
+  function advance(dir){
+    clearTimeout(holdTimer);
+    if(phase==="in"||phase==="hold"){
+      busy=true;
+      toOut(()=>{ busy=false; showQuote(nextIndex(dir)); });
+    }else{
+      showQuote(nextIndex(dir));
+    }
+  }
+
+  /* ---------- main animation frame ---------- */
+  function frame(now){
+    if(phase==="in"){
+      const e=now-t0;
+      if(now-lastFlick>45){ lastFlick=now;
+        for(const c of chars){
+          if(c.isSpace) continue;
+          if(e>=c.lockAt){ if(c.el.className!=="lk"){c.el.className="lk";c.el.textContent=c.ch;} }
+          else { c.el.textContent=rc(GLYPHS); }
+        }
+      }
+      if(e>=IN+40) toHold();
+    }else if(phase==="out"){
+      const e=now-t0;
+      if(now-lastFlick>45){ lastFlick=now;
+        for(const c of chars){ if(!c.isSpace) c.el.textContent=rc(GLYPHS); }
+      }
+      if(e>=OUT){ const cb=qEl._cb; qEl._cb=null; if(cb) cb(); }
+    }
+    // HUD signal bars
+    if(now-(frame._b||0)>160){ frame._b=now;
+      for(const b of barsEl){
+        const h = phase==="hold" ? 40+Math.random()*60 : 15+Math.random()*40;
+        b.style.height=h+"%";
+        b.style.background = phase==="hold" ? "var(--sig)" : "var(--dim)";
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* ============================================================
+     BACKGROUND — drifting static + sonar ping (canvas)
+     ============================================================ */
+  const cv=document.getElementById("noise"), cx=cv.getContext("2d");
+  let W,H,cols,drops=[],FS=16;
+  function resize(){
+    W=cv.width=innerWidth*devicePixelRatio;
+    H=cv.height=innerHeight*devicePixelRatio;
+    cv.style.width=innerWidth+"px";cv.style.height=innerHeight+"px";
+    FS=Math.max(14,Math.round(15*devicePixelRatio));
+    cols=Math.floor(W/(FS*1.6));
+    drops=Array.from({length:cols},()=>Math.random()*H);
+  }
+  resize(); addEventListener("resize",resize);
+
+  let rings=[]; // sonar
+  function ping(){ if(reduce) return; rings.push({r:0,a:.5}); }
+  // ambient occasional ping
+  let nextPing = 6000+Math.random()*8000, pingClock=0, lastT=performance.now();
+
+  function bg(now){
+    const dt=now-lastT; lastT=now;
+    // fade previous frame -> trails
+    cx.fillStyle="rgba(10,7,18,0.20)";
+    cx.fillRect(0,0,W,H);
+    cx.font=FS+"px "+"monospace";
+    for(let i=0;i<cols;i++){
+      if(Math.random()>0.975){                 // sparse: only some columns emit
+        const x=i*FS*1.6+FS*0.3;
+        cx.fillStyle="rgba(60,200,120,"+(0.05+Math.random()*0.11)+")";
+        cx.fillText(rc(GLYPHS), x, drops[i]);
+      }
+      drops[i]+= (reduce?0:(FS*0.35));
+      if(drops[i]>H) drops[i]=0;
+    }
+    // sonar rings
+    if(!reduce){
+      pingClock+=dt;
+      if(pingClock>nextPing){ pingClock=0; nextPing=9000+Math.random()*9000; ping(); }
+      for(const g of rings){
+        g.r += dt*0.09*devicePixelRatio; g.a -= dt*0.00022;
+        cx.beginPath();
+        cx.arc(W/2,H/2,g.r,0,Math.PI*2);
+        cx.strokeStyle="rgba(59,255,136,"+Math.max(0,g.a)+")";
+        cx.lineWidth=1*devicePixelRatio; cx.stroke();
+      }
+      rings=rings.filter(g=>g.a>0 && g.r<Math.max(W,H));
+    }
+    requestAnimationFrame(bg);
+  }
+  requestAnimationFrame(bg);
+
+  /* ============================================================
+     CONTROLS
+     ============================================================ */
+  function setAuto(on){
+    auto=on; modeLabel.textContent = on?"drift":"tune";
+    if(on && phase==="hold"){ clearTimeout(holdTimer); holdTimer=setTimeout(stepLang,HOLD); }
+    if(!on) clearTimeout(holdTimer);
+  }
+  addEventListener("keydown",e=>{
+    if(e.code==="Space"||e.code==="ArrowRight"){ e.preventDefault(); setAuto(false); advance(1); }
+    else if(e.code==="ArrowLeft"){ e.preventDefault(); setAuto(false); advance(-1); }
+    else if(e.key==="d"||e.key==="D"){ setAuto(!auto); }
+    else if(e.key==="h"||e.key==="H"){ document.body.classList.toggle("hud-off"); }
+    else if(e.key==="f"||e.key==="F"){ toggleFS(); }
+  });
+  addEventListener("pointerdown",e=>{
+    if(e.target.closest("#hud-br")) return;   // let links work
+    setAuto(false); advance(1);
+  });
+  function toggleFS(){
+    if(!document.fullscreenElement){ (document.documentElement.requestFullscreen||function(){})(); }
+    else document.exitFullscreen();
+  }
+  document.getElementById("fs").addEventListener("click",e=>{e.stopPropagation();toggleFS();});
+
+  /* idle-hide the HUD after inactivity (screensaver feel) */
+  let idle=null;
+  function poke(){ document.body.classList.remove("hud-off"); clearTimeout(idle);
+    idle=setTimeout(()=>document.body.classList.add("hud-off"),6000); }
+  ["pointermove","keydown","pointerdown"].forEach(ev=>addEventListener(ev,poke));
+  poke();
+
+  /* go */
+  advance(1);
+})();
+</script>
+</body>
+</html>
