@@ -240,6 +240,32 @@
   }
   #room-route .room-link:hover { color: var(--text); }
 
+  /* --- Listening Station: nav link + dashboard call-to-action --- */
+  .side nav a.navlink {
+    display: block; text-decoration: none;
+    padding: 8px 18px; font-family: var(--mono); font-size: 12.5px;
+    color: var(--text); letter-spacing: 0.04em;
+    border-left: 2px solid transparent; margin-top: 4px;
+  }
+  .side nav a.navlink:hover {
+    background: var(--bg-panel-2); color: #8affbe; border-left-color: #3bff88;
+  }
+  .side nav a.navlink .sub { color: var(--text-vdim); font-size: 10px; display: block; }
+  #listen-route {
+    display: block; margin: 16px 0; padding: 12px 16px;
+    border-left: 2px solid #3bff88;
+    background: var(--bg-panel-2);
+    font-size: 11px; color: var(--text-dim); line-height: 1.7;
+    animation: fade-in 0.8s ease;
+  }
+  #listen-route .room-body { font-style: italic; }
+  #listen-route .room-link {
+    display: inline-block; margin-top: 8px;
+    color: #8affbe; text-decoration: none;
+    letter-spacing: 0.15em; font-size: 10px; cursor: pointer;
+  }
+  #listen-route .room-link:hover { color: var(--text); text-shadow: 0 0 12px rgba(59,255,136,.4); }
+
   
   #artifact-popup {
     position: fixed; inset: 0; background: rgba(5, 3, 10, 0.86);
@@ -1166,6 +1192,7 @@
       <button data-section="unresolved">UNRESOLVED<span class="sub">OPEN THREADS</span></button>
       <button data-section="off_world">OFF-WORLD<span class="sub">BEYOND EARTH STUDIES</span></button>
       <button data-section="about">ABOUT<span class="sub">WHO IS THE OBSERVER</span></button>
+      <a class="navlink" href="listen/">LISTENING STATION<span class="sub">SIGNAL / NOISE ▸</span></a>
     </nav>
     <div class="warn-block">
       WARNING<br />
@@ -1212,6 +1239,14 @@
           confirmation that survives. the keeper will be in the room.
         </div>
         <a class="room-link" href="https://www.yogeshwari.one" target="_blank" rel="noopener">ROOM ▸</a>
+      </div>
+
+      <div id="listen-route">
+        <div class="room-body">
+          a signal caught from the archive — the observer's words surface
+          out of the noise, in three tongues, then sink. leave it running.
+        </div>
+        <a class="room-link" href="listen/">▸ OPEN LISTENING STATION</a>
       </div>
 
       <div class="panel">
