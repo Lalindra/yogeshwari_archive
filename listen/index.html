@@ -50,20 +50,24 @@
 
   /* ---- stage ---- */
   #stage{position:fixed;inset:0;z-index:3;display:flex;flex-direction:column;
-    align-items:center;justify-content:center;padding:8vmin;text-align:center}
+    align-items:center;justify-content:center;padding:6vmin;text-align:center;
+    overflow:hidden}
   #quote{
     font-family:var(--mono),var(--intl);
-    font-size:clamp(1.4rem,4.2vw,3.1rem);
-    line-height:1.55;letter-spacing:.01em;font-weight:400;
-    max-width:22em;
+    /* scale with BOTH width and height so it never spills on short/narrow windows */
+    font-size:clamp(1.15rem, min(4vw, 5.6vh), 2.6rem);
+    line-height:1.5;letter-spacing:.01em;font-weight:400;
+    max-width:min(20em, 92vw);
+    overflow-wrap:break-word;
     text-wrap:balance;
     transition:opacity .9s ease;
   }
-  #quote.intl{font-family:var(--intl);letter-spacing:0;line-height:1.7}
+  #quote.intl{font-family:var(--intl);letter-spacing:0;line-height:1.65;
+    font-size:clamp(1.05rem, min(3.7vw, 5vh), 2.3rem)}
   #quote .sc{color:var(--faint);}         /* scrambling glyph */
   #quote .lk{color:var(--ink);            /* locked/resolved glyph */
     text-shadow:0 0 20px rgba(59,255,136,.30);}
-  #quote .sp{white-space:pre;}
+  #quote .sp{white-space:normal;}         /* keep spaces as break opportunities */
 
   #meta{margin-top:2.4em;min-height:1.4em;font-size:clamp(.62rem,1.3vw,.8rem);
     letter-spacing:.34em;color:var(--dim);text-transform:uppercase;
